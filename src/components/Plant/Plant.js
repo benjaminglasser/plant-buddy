@@ -1,14 +1,11 @@
 import styles from './Plant.module.css'
+import Leafs from '../Leafs/Leafs'
 
 function Plant(props) {
     return (
         <div className={styles.Plant}>
             <section>
-                <article>
-                    <div>Name</div>
-                    <div>3 days</div>
-                </article>
-
+                <Leafs leaf={props.leaf} />
                 <hr />
 
                 <div className={styles.input}>

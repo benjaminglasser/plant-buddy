@@ -6,13 +6,20 @@ import Plant from './components/Plant/Plant'
 
 function App() {
 
+  const [leaf, setLeaf] = useState({
+    plants: [{ name: "Fred", schedule: 7 }, { name: "bob", schedule: 2 }],
+    newPlant: {
+      name: "",
+      days: "5"
+    }
+  })
+
   // user state variables
   const [userState, setUserState] = useState({
     user: null
   })
 
   useEffect(function () {
-
     // for auth
 
     const unsubscribe = auth.onAuthStateChanged(user =>
@@ -25,7 +32,6 @@ function App() {
       // clean up subscriptions
       unsubscribe();
     }
-
   }, [])
 
 
@@ -33,7 +39,7 @@ function App() {
   return (
     <div>
       <Header user={userState.user} />
-      <Plant />
+      <Plant leaf={leaf} setLeaf={setLeaf} />
     </div>
   );
 }
