@@ -2,6 +2,7 @@ import './App.css';
 import { auth } from './services/firebase';
 import { useState, useEffect } from 'react'
 import Header from './components/Header/Header'
+import Plant from './components/Plant/Plant'
 
 function App() {
 
@@ -27,11 +28,12 @@ function App() {
 
   }, [])
 
-  console.log(userState);
+
 
   return (
-    <div className="App">
+    <div>
       <Header user={userState.user} />
+      <Plant />
     </div>
   );
 }
