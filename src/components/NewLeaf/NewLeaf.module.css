@@ -38,21 +38,16 @@ button:hover {
   background-color: #737495;
 }
 
-.days {
-  width: 70px;
-}
-
 .input {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  margin: 40px;
 }
 
-.addCntr {
-  background: blue;
-  position: relative;
-  width: 100vw;
-  border-radius: 50%;
+.input > * {
+  margin: 10px;
 }
 
 .add {

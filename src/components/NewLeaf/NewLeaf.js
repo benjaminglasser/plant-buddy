@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
     },
     drawerPaper: {
         width: drawerWidth,
+        background: '#add8e6'
     },
     drawerHeader: {
         display: 'flex',
@@ -96,12 +97,10 @@ export default function NewLeaf(props) {
                 </div>
 
                 <List>
-                    <div className={styles.input}>
-                        <form onSubmit={props.handleSubmit}>
-                            <label>
-                                <input value={props.leaf.newBuddy.name} name="name" placeholder="Enter Name" onChange={props.handleChange} />
-                                <input value={props.leaf.newBuddy.schedule} name="schedule" placeholder="days" className={styles.days} onChange={props.handleChange} />
-                            </label>
+                    <div>
+                        <form className={styles.input} onSubmit={props.handleSubmit}>
+                            <input value={props.leaf.newBuddy.name} name="name" placeholder="Enter Name" onChange={props.handleChange} />
+                            <input value={props.leaf.newBuddy.schedule} name="schedule" placeholder="days" className={styles.days} onChange={props.handleChange} />
                             <button>submit</button>
                         </form>
                     </div>
