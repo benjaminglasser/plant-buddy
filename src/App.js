@@ -3,17 +3,17 @@ import { auth } from './services/firebase';
 import { useState, useEffect } from 'react'
 import Header from './components/Header/Header'
 import Plant from './components/Plant/Plant'
-import { createBuddy } from './services/buddy-service'
+import { createBuddy, fetchBuddies } from './services/buddy-service'
 
 function App() {
 
 
   //Main State for leaf info
   const [leaf, setLeaf] = useState({
-    buddies: [{ name: "Fred", schedule: 7 }, { name: "bob", schedule: 2 }],
+    buddies: [{}],
     newBuddy: {
       name: "",
-      days: "5"
+      schedule: ""
     }
   })
 
@@ -27,9 +27,20 @@ function App() {
       buddies: [...leaf.buddies, buddy],
       newBuddy: {
         name: "",
-        days: "5"
+        schedule: ""
       }
     })
+  }
+
+  function handleChange(e) {
+    setLeaf((prevState) => ({
+      ...prevState,
+      newBuddy: {
+        ...prevState.newBuddy,
+        [e.target.name]: e.target.value
+      }
+    }))
+
   }
 
   // user state variables
@@ -37,15 +48,29 @@ function App() {
     user: null
   })
 
-  useEffect(function () {
-    // for auth
+  // initial load of info from backend
+  // auth load
 
+  useEffect(function () {
+
+    async function getAppData() {
+
+      const buddies = await fetchBuddies();
+
+      setLeaf(prevState => ({
+        ...prevState,
+        buddies
+      }))
+    }
+
+    getAppData();
+
+    // for auth
     const unsubscribe = auth.onAuthStateChanged(user =>
       setUserState({ user })
     );
 
     // clean up function
-
     return function () {
       // clean up subscriptions
       unsubscribe();
@@ -57,7 +82,7 @@ function App() {
   return (
     <div>
       <Header user={userState.user} />
-      <Plant leaf={leaf} setLeaf={setLeaf} />
+      <Plant leaf={leaf} setLeaf={setLeaf} handleSubmit={handleSubmit} handleChange={handleChange} />
     </div>
   );
 }

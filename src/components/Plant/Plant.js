@@ -9,7 +9,7 @@ function Plant(props) {
                 <Leafs leaf={props.leaf} />
                 <hr />
 
-                <NewLeaf />
+                <NewLeaf leaf={props.leaf} handleSubmit={props.handleSubmit} handleChange={props.handleChange} />
             </section>
         </div>
 

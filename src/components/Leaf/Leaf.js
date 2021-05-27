@@ -4,7 +4,7 @@ function Leaf(props) {
     return (
         <div>
             {props.leaf.buddies.map((plant, idx) =>
-                <article>
+                <article key={idx}>
                     <div>{plant.name}</div>
                     <div>{plant.schedule} days</div>
                 </article>
