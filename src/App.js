@@ -3,7 +3,9 @@ import { auth } from './services/firebase';
 import { useState, useEffect } from 'react'
 import Header from './components/Header/Header'
 import Plant from './components/Plant/Plant'
+import NewLeaf from './components/NewLeaf/NewLeaf'
 import { createBuddy, fetchBuddies } from './services/buddy-service'
+
 
 function App() {
 
@@ -82,6 +84,7 @@ function App() {
   return (
     <div>
       <Header user={userState.user} />
+      <NewLeaf leaf={leaf} handleSubmit={handleSubmit} handleChange={handleChange} />
       <Plant leaf={leaf} setLeaf={setLeaf} handleSubmit={handleSubmit} handleChange={handleChange} />
     </div>
   );

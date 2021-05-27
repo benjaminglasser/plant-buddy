@@ -47,3 +47,16 @@ button:hover {
   align-items: center;
   justify-content: center;
 }
+
+.addCntr {
+  background: blue;
+  position: relative;
+  width: 100vw;
+  border-radius: 50%;
+}
+
+.add {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
