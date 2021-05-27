@@ -1,11 +1,12 @@
 import styles from './Header.module.css'
 import { login, logout } from '../../services/firebase';
+import Logo from "../../logo/Plant-Buddy-Logo-01.png"
 
 function Header(props) {
     return (
         <div className={styles.headerCntr}>
             <header className={styles.header}>
-                <h1>Plant Buddy</h1>
+                <img src={Logo} alt="Plant Buddy Logo" />
                 <nav>
                     <ul>
                         {

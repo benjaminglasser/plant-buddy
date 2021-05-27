@@ -10,9 +10,7 @@
   padding: 0 1rem;
   align-items: center;
   justify-content: space-between;
-  font-size: 30px;
-
-  color: black;
+  margin: 20px;
 }
 
 .header nav {
@@ -20,6 +18,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  color: green;
 }
 
 .header ul {
@@ -29,10 +28,14 @@
 }
 
 .header li {
-  margin-right: 1rem;
+  margin: 0 auto;
 }
 
 .navLink {
   cursor: pointer;
   font-weight: 700;
+}
+
+img {
+  width: 150px;
 }
