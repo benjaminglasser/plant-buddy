@@ -82,10 +82,11 @@ function App() {
 
 
   return (
-    <div>
+    <div >
       <Header user={userState.user} />
       <NewLeaf leaf={leaf} handleSubmit={handleSubmit} handleChange={handleChange} />
       <Plant leaf={leaf} setLeaf={setLeaf} handleSubmit={handleSubmit} handleChange={handleChange} />
+
     </div>
   );
 }

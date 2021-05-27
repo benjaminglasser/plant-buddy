@@ -5,13 +5,14 @@ import Leafs from '../Leafs/Leafs'
 
 function Plant(props) {
     return (
-        <div className={styles.Plant}>
-            <section>
-                <Leafs leaf={props.leaf} />
-                <hr />
 
-            </section>
-        </div>
+        <div className={styles.main}>
+            <div className={styles.plant}>
+
+                <Leafs className={styles.Plant} leaf={props.leaf} />
+            </div>
+        </div >
+
 
     )
 }

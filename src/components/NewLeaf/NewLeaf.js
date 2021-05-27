@@ -4,10 +4,7 @@ import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import Toolbar from '@material-ui/core/Toolbar';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
@@ -94,10 +91,10 @@ export default function NewLeaf(props) {
             >
                 <div className={classes.drawerHeader}>
                     <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                        <ChevronRightIcon />
                     </IconButton>
                 </div>
-                <Divider />
+
                 <List>
                     <div className={styles.input}>
                         <form onSubmit={props.handleSubmit}>
@@ -109,7 +106,7 @@ export default function NewLeaf(props) {
                         </form>
                     </div>
                 </List>
-                <Divider />
+
 
             </Drawer>
         </div>
