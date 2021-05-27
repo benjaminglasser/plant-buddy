@@ -10,7 +10,7 @@
   padding: 0 1rem;
   align-items: center;
   justify-content: space-between;
-  margin: 20px;
+  margin: 34px 20px;
 }
 
 .header nav {
@@ -19,16 +19,15 @@
   align-items: center;
   justify-content: center;
   color: green;
+  margin-left: -30px;
+  margin-top: 10px;
+  flex-grow: 1;
 }
 
 .header ul {
   display: flex;
   flex-direction: column;
   list-style: none;
-}
-
-.header li {
-  margin: 0 auto;
 }
 
 .navLink {

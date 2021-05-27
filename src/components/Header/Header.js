@@ -12,8 +12,8 @@ function Header(props) {
                         {
                             props.user ?
                                 <>
-                                    <li>Hello {props.user.displayName}</li>
-                                    <li className={styles.navLink}
+                                    <li style={{ fontSize: '15px' }}>Hello {props.user.displayName}</li>
+                                    <li style={{ fontSize: '10px' }} className={styles.navLink}
                                         onClick={logout}>
                                         Logout
                                 </li>
@@ -23,7 +23,7 @@ function Header(props) {
                     </ul>
                 </nav>
             </header>
-        </div>
+        </div >
     )
 }
 

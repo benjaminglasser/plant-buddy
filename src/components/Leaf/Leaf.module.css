@@ -20,3 +20,7 @@ article > div:nth-child(2) {
   background-color: #f17d80;
   text-align: center;
 }
+
+.Leaf {
+  display: flex;
+}
