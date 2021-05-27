@@ -1,7 +1,24 @@
 import styles from './Countdown.module.css'
 import { useRef, useState, useEffect } from 'react';
 
-const Countdown = () => {
+const Countdown = (props) => {
+
+
+
+    // helper function to figure out next date from now
+    function newDate(numDays) {
+        const dateNow = new Date();
+        let numberOfDaysToAdd = numDays;
+        dateNow.setDate(dateNow.getDate() + numberOfDaysToAdd);
+
+        let mm = dateNow.getMonth() + 1;
+        let dd = dateNow.getDate();
+        let y = dateNow.getFullYear();
+
+        let formattedDate = `${mm}/${dd}/${y}`;
+        return formattedDate;
+    }
+
 
     // creates state variables
     const [timerDays, setTimerDays] = useState('00')
@@ -14,9 +31,11 @@ const Countdown = () => {
     //Starts Timer
     const startTimer = () => {
 
+        let getFutureDate = newDate(props.schedule);
+
         //Sets the date that you would like to countdown from 
         // TODO: make the end date a variable
-        const countdownDate = new Date('May 31, 2021 00:00:00').getTime();
+        const countdownDate = new Date(`${getFutureDate} 00:00:00`).getTime();
 
         // figures out how much time between final date and now
         interval = setInterval(() => {
@@ -47,10 +66,12 @@ const Countdown = () => {
         }, 1000);
     };
 
-    // componentDidMount
 
+
+    // componentDidMount
     useEffect(() => {
         startTimer();
+
         return () => {
             clearInterval(interval.current);
         }
