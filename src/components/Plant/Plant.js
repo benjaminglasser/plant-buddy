@@ -1,5 +1,6 @@
 import styles from './Plant.module.css'
 import Leafs from '../Leafs/Leafs'
+import PlantGrower from '../PlantGrower/PlantGrower'
 
 
 
@@ -8,11 +9,14 @@ function Plant(props) {
 
         <div className={styles.main}>
             <div className={styles.plant}>
-                <Leafs
+                {/* <Leafs
                     className={styles.Plant}
                     leaf={props.leaf}
                     handleDelete={props.handleDelete}
-                />
+                /> */}
+
+                <PlantGrower className={styles.plant} />
+
             </div>
         </div >
 
