@@ -15,7 +15,11 @@ function Plant(props) {
                     handleDelete={props.handleDelete}
                 /> */}
 
-                <PlantGrower className={styles.plant} />
+                <PlantGrower
+                    className={styles.plant}
+                    leaf={props.leaf}
+                    handleDelete={props.handleDelete}
+                />
 
             </div>
         </div >

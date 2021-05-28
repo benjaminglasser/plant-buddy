@@ -1,0 +1,49 @@
+/* .addCntr {
+  background: blue;
+  width: 100px;
+} */
+
+.Show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Show > * {
+  padding: 30px;
+}
+
+.Trash {
+  cursor: pointer;
+  background: yellow;
+  padding: 10px;
+}
+
+.leaf0 {
+  width: 80px;
+  height: 20px;
+
+  border-radius: 50%;
+  background: #70b77e;
+  transform: rotate(-30deg) translate(8px);
+}
+
+.leaf0:hover {
+  background: #5e9b6a;
+  cursor: pointer;
+}
+
+.leaf1 {
+  width: 80px;
+  height: 20px;
+
+  border-radius: 50%;
+  background: #70b77e;
+  transform: rotate(30deg) translate(-87px);
+}
+
+.leaf1:hover {
+  background: #5e9b6a;
+  cursor: pointer;
+}

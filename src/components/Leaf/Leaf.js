@@ -21,25 +21,19 @@ function Leaf(props) {
 
 
 
-
     return (
         <div>
             {props.leaf.buddies.map((plant, idx) =>
                 <div className={styles.Leaf} >
-                    <article style={leafStyle} key={plant._id} >
-                        <div>{plant.name}</div>
-                        <Countdown
-                            schedule={plant.schedule}
-                        />
-                        <div style={{ backgroundColor: 'black' }} > {plant.schedule} days</div>
-                        <div className={styles.Trash} onClick={() => props.handleDelete(plant._id)}>{'🗑'}</div>
-                    </article>
-                    <ShowLeaf
+
+                    {/* <ShowLeaf
                         name={plant.name}
                         schedule={plant.schedule}
                         plantId={plant._id}
                         handleDelete={props.handleDelete}
-                    />
+                        num={idx}
+                    /> */}
+                    <p>yo</p>
                 </div>
             )}
         </div>

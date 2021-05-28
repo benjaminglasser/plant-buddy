@@ -1,6 +1,7 @@
 import "./PlantGrower.css"
 import $ from 'jquery'
 import { useEffect } from 'react'
+import ShowLeaf from '../ShowLeaf/ShowLeaf'
 
 const PlantGrower = (props) => {
 
@@ -22,10 +23,18 @@ const PlantGrower = (props) => {
             <div className="wrapper">
                 <div className="box">
                     <div className="stem">
-
-                        <div className="leaf1"></div>
-
-
+                        {props.leaf.buddies.map((plant, idx) =>
+                            <div>
+                                <ShowLeaf
+                                    name={plant.name}
+                                    schedule={plant.schedule}
+                                    plantId={plant._id}
+                                    handleDelete={props.handleDelete}
+                                    idx={idx}
+                                />
+                                {/* <div className="leaf1"></div> */}
+                            </div>
+                        )}
                     </div>
                     <div className="pot"></div>
                     <div className="pot-top"></div>

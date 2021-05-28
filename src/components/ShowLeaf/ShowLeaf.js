@@ -1,14 +1,11 @@
-import styles from './ShowLeaf.module.css'
+import './ShowLeaf.css'
 import React from 'react';
-import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import IconButton from '@material-ui/core/IconButton';
-import AddIcon from '@material-ui/icons/Add';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Countdown from '../Countdown/Countdown'
-
 const drawerWidth = 400;
 
 const useStyles = makeStyles((theme) => ({
@@ -50,8 +47,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ShowLeaf(props) {
+
+    // convert idx into true or false
+    function convert(num) {
+        let result = num % 2 === 0 ? 0 : 1
+        return result
+    }
+
+    let number = convert(props.idx)
+    let LEAF_STYLE = `leaf${number}`
+
     const classes = useStyles();
-    const theme = useTheme();
+    // const theme = useTheme();
     const [open, setOpen] = React.useState(false);
 
     const handleDrawerOpen = () => {
@@ -63,23 +70,24 @@ export default function ShowLeaf(props) {
     };
 
     return (
-        <div className={classes.root} styles={{ width: '100px' }}>
+        <div className={classes.root} >
 
-            {/* click to open */}
-            < div className={styles.addCntr} >
-                <div className={styles.add} >
+            <div className="addCntr" >
+                <div className="add" >
                     <IconButton
-                        color="inherit"
+                        // color="inherit"
                         aria-label="open drawer"
                         edge="end"
                         onClick={handleDrawerOpen}
+                        className="ShowBtn"
                     // className={clsx(open && classes.hide)}
                     >
-                        <AddIcon />
+                        <div className={LEAF_STYLE} />
+
                     </IconButton>
                 </div>
-            </div >
 
+            </div>
 
             <Drawer
                 className={classes.drawer}
@@ -99,12 +107,12 @@ export default function ShowLeaf(props) {
                 </div>
 
                 <List>
-                    <div className={styles.Show}>
+                    <div className="Show">
                         <h1>{props.name}</h1>
                         <p>{props.schedule} days</p>
                         <Countdown schedule={props.schedule} />
                         <div onClick={handleDrawerClose}>
-                            <div className={styles.Trash} onClick={() => props.handleDelete(props.plantId)}>DELETE</div>
+                            <div className="Trash" onClick={() => props.handleDelete(props.plantId)}>DELETE</div>
                         </div>
                     </div>
                 </List>
