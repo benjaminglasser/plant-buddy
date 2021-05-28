@@ -1,5 +1,7 @@
 import styles from './Leaf.module.css'
 import Countdown from '../Countdown/Countdown'
+import Countdown2 from '../Countdown2/Countdown2'
+import { useState } from 'react';
 
 function Leaf(props) {
 
@@ -18,17 +20,36 @@ function Leaf(props) {
         return formattedDate;
     }
 
+    // leaf styles
+    const [leafStyle, setLeafStyle] = useState(true)
+
+    const aliveTheme = {
+        background: 'blue',
+    }
+
+    const deadTheme = {
+        background: 'brown',
+    }
+
+    function handleStyleChange() {
+        if (leafStyle === false) {
+            setLeafStyle(true)
+        } else {
+            setLeafStyle(false)
+        }
+    }
 
 
     return (
         <div>
             {props.leaf.buddies.map((plant, idx) =>
-                <div className={styles.Leaf}>
-                    <article key={idx}>
+                <div className={styles.Leaf} >
+                    <article key={idx} style={leafStyle === true ? aliveTheme : deadTheme}>
                         <div>{plant.name}</div>
-                        <div>{plant.schedule} days</div>
+                        {/* <div>{plant.schedule} days</div> */}
+                        <Countdown2 schedule={plant.schedule} newDate={newDate} handleStyleChange={handleStyleChange} />
                     </article>
-                    <Countdown schedule={plant.schedule} newDate={newDate} />
+                    {/* <Countdown schedule={plant.schedule} newDate={newDate} handleStyleChange={handleStyleChange} /> */}
                 </div>
             )}
         </div>

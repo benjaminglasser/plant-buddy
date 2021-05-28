@@ -4,7 +4,6 @@ import { useRef, useState, useEffect } from 'react';
 const Countdown = (props) => {
 
 
-
     // helper function to figure out next date from now
     function newDate(numDays) {
         const dateNow = new Date();
@@ -21,17 +20,18 @@ const Countdown = (props) => {
 
 
     // creates state variables
-    const [timerDays, setTimerDays] = useState('00')
-    const [timerHours, setTimerHours] = useState('00')
-    const [timerMinutes, setTimerMinutes] = useState('00')
-    const [timerSeconds, setTimerSeconds] = useState('00')
+    const [timerDays, setTimerDays] = useState('')
+    const [timerHours, setTimerHours] = useState('')
+    const [timerMinutes, setTimerMinutes] = useState('')
+    const [timerSeconds, setTimerSeconds] = useState('')
 
     let interval = useRef();
+    let getFutureDate = useRef();
 
     //Starts Timer
     const startTimer = () => {
 
-        let getFutureDate = newDate(props.schedule);
+        getFutureDate = newDate(props.schedule);
 
         //Sets the date that you would like to countdown from 
         // TODO: make the end date a variable
@@ -52,9 +52,11 @@ const Countdown = (props) => {
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
             // if timer is up then: TODO: set notification
-            if (distance < 0) {
+            if (distance <= 0) {
                 // stop timer
+                // props.handleStyleChange();
                 clearInterval(interval.current);
+
             } else {
                 // update time
                 setTimerDays(days);
@@ -62,6 +64,7 @@ const Countdown = (props) => {
                 setTimerMinutes(minutes);
                 setTimerSeconds(seconds);
             }
+
 
         }, 1000);
     };
@@ -76,6 +79,15 @@ const Countdown = (props) => {
             clearInterval(interval.current);
         }
     })
+
+    //reset function
+    function handleReset() {
+
+        clearInterval(interval.current);
+        console.log('clicked')
+
+
+    }
 
     return (
         <div className={styles.CountdownCntr}>
@@ -101,6 +113,8 @@ const Countdown = (props) => {
                             <p>{timerSeconds}</p>
                             <p><small>Seconds</small></p>
                         </section>
+                        <button onClick={handleReset}>reset</button>
+                        <button onClick={props.handleStyleChange}>change color</button>
 
                     </div>
 

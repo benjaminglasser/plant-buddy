@@ -1,10 +1,11 @@
 article {
   display: flex;
   justify-content: space-between;
-  min-width: 17.25rem;
+  width: 600px;
   color: white;
   margin: 0.1rem;
-  background-color: green;
+
+  /* background-color: green; */
 }
 
 article > div {
@@ -16,11 +17,15 @@ article > div:nth-child(1) {
 }
 
 article > div:nth-child(2) {
+  display: flex;
+  justify-content: space-between;
   width: 4rem;
-  background-color: #f17d80;
+  background-color: #f1a3a5;
+  min-width: 400px;
   text-align: center;
 }
 
 .Leaf {
   display: flex;
+  padding: 10px;
 }
