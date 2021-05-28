@@ -30,14 +30,16 @@ function Leaf(props) {
                         <div>{plant.name}</div>
                         <Countdown
                             schedule={plant.schedule}
-                            setLeafStyle={setLeafStyle}
-                            aliveTheme={aliveTheme}
-                            deadTheme={deadTheme}
                         />
                         <div style={{ backgroundColor: 'black' }} > {plant.schedule} days</div>
                         <div className={styles.Trash} onClick={() => props.handleDelete(plant._id)}>{'🗑'}</div>
                     </article>
-                    {/* <ShowLeaf name={plant.name} schedule={plant.schedule} /> */}
+                    <ShowLeaf
+                        name={plant.name}
+                        schedule={plant.schedule}
+                        plantId={plant._id}
+                        handleDelete={props.handleDelete}
+                    />
                 </div>
             )}
         </div>

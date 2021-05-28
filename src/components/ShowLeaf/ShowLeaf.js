@@ -7,6 +7,7 @@ import List from '@material-ui/core/List';
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import Countdown from '../Countdown/Countdown'
 
 const drawerWidth = 400;
 
@@ -101,6 +102,10 @@ export default function ShowLeaf(props) {
                     <div className={styles.Show}>
                         <h1>{props.name}</h1>
                         <p>{props.schedule} days</p>
+                        <Countdown schedule={props.schedule} />
+                        <div onClick={handleDrawerClose}>
+                            <div className={styles.Trash} onClick={() => props.handleDelete(props.plantId)}>DELETE</div>
+                        </div>
                     </div>
                 </List>
 

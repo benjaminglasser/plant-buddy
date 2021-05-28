@@ -9,3 +9,13 @@
   align-items: center;
   flex-direction: column;
 }
+
+.Show > * {
+  padding: 30px;
+}
+
+.Trash {
+  cursor: pointer;
+  background: yellow;
+  padding: 10px;
+}
