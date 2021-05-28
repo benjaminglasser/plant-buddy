@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 
 const Countdown = (props) => {
 
+    // TODO: if the hours, minutes, and seconds === 0, props.schedule - 1 and run it again
 
 
     // helper function to figure out next date from now
@@ -28,7 +29,7 @@ const Countdown = (props) => {
         // calculates the difference in milliseconds from the future date to now
         const difference = +new Date(
             `${getFutureDate} 00:00:00`
-            // '05/27/2021 17:13:00'
+            // '05/27/2021 20:43:00'
         ) - +new Date();
 
         let timeLeft = {};
@@ -52,11 +53,14 @@ const Countdown = (props) => {
     const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
     useEffect(() => {
+
+
         const timer = setTimeout(() => {
             setTimeLeft(calculateTimeLeft())
         }, 1000)
-
         return () => clearTimeout(timer);
+
+
     })
 
     const timerComponents = [];
@@ -67,11 +71,26 @@ const Countdown = (props) => {
         }
 
         timerComponents.push(
-            <span key={idx}>
+            <span>
                 {timeLeft[interval]} {interval}{" "}
-            </span >
+            </span>
         );
     });
+
+    // timerComponents.push(
+    //     <div>
+    //         <span>{timeLeft.days} days </span>
+    //         <span>{timeLeft.hours} hours </span>
+    //         <span>{timeLeft.minutes} minutes </span>
+    //         <span>{timeLeft.seconds} seconds </span>
+    //     </div>
+    // );
+
+
+
+    // if (timerComponents.length === 0) {
+    //     props.setLeafStyle(props.deadTheme)
+    // }
 
     function handleReset() {
         const timer = setTimeout(() => {
@@ -83,9 +102,12 @@ const Countdown = (props) => {
 
     return (
         <div className={styles.Cntr}>
-            {timerComponents.length ? timerComponents : <button onClick={handleReset}>Water Your Buddy!</button>}
 
-            {/* <button onClick={props.handleStyleChange}>change color</button> */}
+            {timerComponents.length ?
+                timerComponents
+                : <button onClick={handleReset}>Water Your Buddy!</button>}
+
+
         </div>
     )
 }

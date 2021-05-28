@@ -27,6 +27,8 @@ article > div:nth-child(2) {
 
 .Leaf {
   display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 10px;
 }
 

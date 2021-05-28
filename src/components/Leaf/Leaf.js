@@ -1,13 +1,13 @@
 import styles from './Leaf.module.css'
 import Countdown from '../Countdown/Countdown'
 import { useState } from 'react';
+import ShowLeaf from '../ShowLeaf/ShowLeaf'
 
 function Leaf(props) {
 
 
 
     // leaf styles
-    const [leafStyle, setLeafStyle] = useState(true)
 
     const aliveTheme = {
         background: 'green',
@@ -17,13 +17,8 @@ function Leaf(props) {
         background: 'brown',
     }
 
-    function handleStyleChange() {
-        if (leafStyle === false) {
-            setLeafStyle(true)
-        } else {
-            setLeafStyle(false)
-        }
-    }
+    const [leafStyle, setLeafStyle] = useState(aliveTheme)
+
 
 
 
@@ -31,13 +26,18 @@ function Leaf(props) {
         <div>
             {props.leaf.buddies.map((plant, idx) =>
                 <div className={styles.Leaf} >
-                    <article key={plant._id} >
-                        <div style={leafStyle === true ? aliveTheme : deadTheme}>{plant.name}</div>
-                        {/* <div>{plant.schedule} days</div> */}
-                        <Countdown schedule={plant.schedule} handleStyleChange={handleStyleChange} />
+                    <article style={leafStyle} key={plant._id} >
+                        <div>{plant.name}</div>
+                        <Countdown
+                            schedule={plant.schedule}
+                            setLeafStyle={setLeafStyle}
+                            aliveTheme={aliveTheme}
+                            deadTheme={deadTheme}
+                        />
+                        <div style={{ backgroundColor: 'black' }} > {plant.schedule} days</div>
                         <div className={styles.Trash} onClick={() => props.handleDelete(plant._id)}>{'🗑'}</div>
                     </article>
-                    {/* <Countdown schedule={plant.schedule} newDate={newDate} handleStyleChange={handleStyleChange} /> */}
+                    {/* <ShowLeaf name={plant.name} schedule={plant.schedule} /> */}
                 </div>
             )}
         </div>
