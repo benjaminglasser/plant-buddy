@@ -25,7 +25,7 @@
   height: 20px;
 
   border-radius: 50%;
-  background: #70b77e;
+
   transform: rotate(-30deg) translate(8px);
   display: flex;
   justify-content: center;
@@ -41,7 +41,7 @@
   width: 80px;
   height: 20px;
   border-radius: 50%;
-  background: #70b77e;
+
   transform: rotate(30deg) translate(-87px);
   display: flex;
   justify-content: center;

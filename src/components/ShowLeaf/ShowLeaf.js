@@ -1,5 +1,6 @@
 import './ShowLeaf.css'
 import React from 'react';
+import { useState, useEffect } from 'react'
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
@@ -48,6 +49,53 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ShowLeaf(props) {
 
+    // helper function to figure out next date from now
+    function newDate(numDays) {
+        const dateNow = new Date();
+        let numberOfDaysToAdd = numDays;
+        dateNow.setDate(dateNow.getDate() + numberOfDaysToAdd);
+
+        let mm = dateNow.getMonth() + 1;
+        let dd = dateNow.getDate();
+        let y = dateNow.getFullYear();
+
+        let formattedDate = `${mm}/${dd}/${y}`;
+        return formattedDate;
+    }
+
+    function todaysDate() {
+        let today = new Date();
+        let date = (today.getMonth() + 1) + '/' + today.getDate() + '/' + today.getFullYear();
+        return date
+    }
+
+
+    // main calculate function
+    const calculateTimeLeft = () => {
+
+        //calculates the future date
+        let getFutureDate = newDate(props.schedule);
+        return getFutureDate;
+
+    }
+
+    const [nextDate, setNextDate] = useState(calculateTimeLeft());
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setNextDate(calculateTimeLeft())
+        }, 1000)
+        return () => clearTimeout(timer);
+
+    })
+
+    let today = todaysDate()
+
+
+
+
+
+
     // convert idx into true or false
     function convert(num) {
         let result = num % 2 === 0 ? 0 : 1
@@ -70,22 +118,20 @@ export default function ShowLeaf(props) {
     };
 
     return (
-        <div className={classes.root} >
+        <div  >
 
-            <div className="addCntr" >
-                <div className="add" >
-                    <div
-                        aria-label="open drawer"
-                        edge="end"
-                        onClick={handleDrawerOpen}
-                        className="ShowBtn"
-                    >
-                        <div className={LEAF_STYLE} >{props.name}</div>
-
-                    </div>
-                </div>
+            <div
+                aria-label="open drawer"
+                edge="end"
+                onClick={handleDrawerOpen}
+                className="ShowBtn"
+            >
+                <div className={LEAF_STYLE} style={today === nextDate ? { backgroundColor: 'grey' } : { backgroundColor: 'green' }}> {props.name}</div>
 
             </div>
+
+
+
 
             <Drawer
                 className={classes.drawer}
@@ -107,8 +153,12 @@ export default function ShowLeaf(props) {
                 <List>
                     <div className="Show">
                         <h1>{props.name}</h1>
-                        <p>Needs to drink every {props.schedule} days</p>
-                        <Countdown2 schedule={props.schedule} />
+                        <p>Needs a drink every {props.schedule} days</p>
+                        <Countdown2
+                            schedule={props.schedule}
+                            today={today}
+                            nextDate={nextDate}
+                        />
                         <div onClick={handleDrawerClose}>
                             <div className="Trash" onClick={() => props.handleDelete(props.plantId)}>DELETE</div>
                         </div>
