@@ -38,56 +38,11 @@
 .stem {
   position: absolute;
   width: 2%;
-  height: 300px;
+  height: 600px;
   left: 49%;
   bottom: 20%;
   background: #70b77e;
 }
-
-/* .leaf .line {
-  position: absolute;
-  width: 80%;
-  height: 1%;
-  background: rgba(0, 0, 0, 0.1);
-  top: 48%;
-} */
-
-/* .leaf01 {
-  top: -100px;
-  left: 40px;
-  transform: rotate(30deg);
-}
-
-.leaf02 {
-  top: 0px;
-  right: 48px;
-  transform: rotate(260deg);
-} */
-
-/* 
-.leaf03 {
-  top: 30%;
-  left: 50%;
-  transform: rotate(-25deg);
-}
-
-.leaf04 {
-  top: 20%;
-  right: 50%;
-  transform: rotate(205deg);
-}
-
-.leaf05 {
-  top: -17%;
-  left: -120%;
-  transform: rotate(-60deg);
-}
-
-.leaf06 {
-  top: -9%;
-  right: 22%;
-  transform: rotate(195deg);
-} */
 
 /* --- ANIMATION --- */
 
@@ -103,14 +58,19 @@
 
 @keyframes grow {
   0% {
-    bottom: -40%;
+    height: 0px;
     width: 1%;
   }
 
   100% {
-    bottom: 20%;
+    height: 600px;
     width: 2%;
   }
+}
+
+.stem.rain .leaf0 {
+  animation: leafGrow 1s linear 1;
+  animation-fill-mode: forwards;
 }
 
 .stem.rain .leaf1 {
@@ -118,50 +78,15 @@
   animation-fill-mode: forwards;
 }
 
-.stem.rain .leaf2 {
-  animation: leafGrow 1s linear 1;
-  animation-fill-mode: forwards;
-}
-
 @keyframes leafGrow {
   0% {
-    width: 0%;
-    height: 0%;
+    width: 0px;
+    height: 0px;
   }
 
   100% {
-    width: 700%;
-    height: 10%;
-  }
-}
-
-@keyframes topLeafRight {
-  0% {
-    top: 5%;
-    width: 0%;
-    height: 0%;
-    left: 10%;
-  }
-
-  100% {
-    width: 700%;
-    height: 10%;
-    top: -17%;
-    left: -120%;
-  }
-}
-
-@keyframes topLeafLeft {
-  0% {
-    top: 0%;
-    width: 0%;
-    height: 0%;
-  }
-
-  100% {
-    width: 700%;
-    height: 10%;
-    top: -9%;
+    width: 80px;
+    height: 20px;
   }
 }
 

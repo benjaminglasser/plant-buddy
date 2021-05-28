@@ -27,6 +27,9 @@
   border-radius: 50%;
   background: #70b77e;
   transform: rotate(-30deg) translate(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .leaf0:hover {
@@ -37,10 +40,12 @@
 .leaf1 {
   width: 80px;
   height: 20px;
-
   border-radius: 50%;
   background: #70b77e;
   transform: rotate(30deg) translate(-87px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .leaf1:hover {

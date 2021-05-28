@@ -5,7 +5,7 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import Countdown from '../Countdown/Countdown'
+import Countdown2 from '../Countdown2/Countdown2'
 const drawerWidth = 400;
 
 const useStyles = makeStyles((theme) => ({
@@ -74,17 +74,15 @@ export default function ShowLeaf(props) {
 
             <div className="addCntr" >
                 <div className="add" >
-                    <IconButton
-                        // color="inherit"
+                    <div
                         aria-label="open drawer"
                         edge="end"
                         onClick={handleDrawerOpen}
                         className="ShowBtn"
-                    // className={clsx(open && classes.hide)}
                     >
-                        <div className={LEAF_STYLE} />
+                        <div className={LEAF_STYLE} >{props.name}</div>
 
-                    </IconButton>
+                    </div>
                 </div>
 
             </div>
@@ -109,8 +107,8 @@ export default function ShowLeaf(props) {
                 <List>
                     <div className="Show">
                         <h1>{props.name}</h1>
-                        <p>{props.schedule} days</p>
-                        <Countdown schedule={props.schedule} />
+                        <p>Needs to drink every {props.schedule} days</p>
+                        <Countdown2 schedule={props.schedule} />
                         <div onClick={handleDrawerClose}>
                             <div className="Trash" onClick={() => props.handleDelete(props.plantId)}>DELETE</div>
                         </div>
