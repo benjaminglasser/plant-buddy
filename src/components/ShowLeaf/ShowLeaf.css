@@ -26,7 +26,7 @@
 
   border-radius: 50%;
 
-  transform: rotate(-30deg) translate(8px);
+  transform: rotate(-30deg) translateX(-9px) translateY(30px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,6 +35,8 @@
 .leaf0:hover {
   background: #00000075;
   cursor: pointer;
+  height: 22px;
+  width: 82px;
 }
 
 .leaf1 {
@@ -42,7 +44,7 @@
   height: 20px;
   border-radius: 50%;
 
-  transform: rotate(30deg) translate(-87px);
+  transform: rotate(30deg) translateX(-69px) translateY(30px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,5 +52,7 @@
 
 .leaf1:hover {
   background: #00000075;
+  height: 22px;
+  width: 82px;
   cursor: pointer;
 }

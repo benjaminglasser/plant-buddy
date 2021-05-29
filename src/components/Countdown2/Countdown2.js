@@ -10,7 +10,7 @@ const Countdown = (props) => {
 
             { props.nextDate !== props.today ?
                 props.nextDate
-                : <button >Water Your Buddy!</button>}
+                : <button onClick={() => props.handleUpdate(props.plantId)}>Water Your Buddy!</button>}
 
 
         </div>

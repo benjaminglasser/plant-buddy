@@ -190,6 +190,8 @@ export default function ShowLeaf(props) {
                             schedule={props.schedule}
                             today={today}
                             nextDate={nextDate}
+                            handleUpdate={props.handleUpdate}
+                            plantId={props.plantId}
 
                         />
                         <div onClick={handleDrawerClose}>

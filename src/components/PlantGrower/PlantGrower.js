@@ -24,6 +24,7 @@ const PlantGrower = (props) => {
                 <div className="box">
                     {props.leaf.buddies ? (
                         <>
+                            <div className="flower"></div>
                             <div className="stem">
                                 {props.leaf.buddies.map((plant, idx) =>
                                     <div key={idx}>
@@ -36,12 +37,13 @@ const PlantGrower = (props) => {
                                             idx={idx}
                                             handleUpdate={props.handleUpdate}
                                         />
-                                        {/* <div className="leaf1"></div> */}
+
                                     </div>
                                 )}
                             </div>
                         </>
-                    ) : "reload page"}
+                    ) : window.location.reload()}
+
                     <div className="pot"></div>
                     <div className="pot-top"></div>
                 </div>
