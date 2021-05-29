@@ -114,7 +114,7 @@ const Countdown = (props) => {
                             <p><small>Seconds</small></p>
                         </section>
                         <button onClick={handleReset}>reset</button>
-                        <button onClick={props.handleStyleChange}>change color</button>
+                        {/* <button onClick={props.handleStyleChange}>change color</button> */}
 
                     </div>
 

@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 
 const Countdown = (props) => {
 
+
+
     // helper function to figure out next date from now
     function newDate(numDays) {
         const dateNow = new Date();
@@ -65,20 +67,24 @@ const Countdown = (props) => {
         }
 
         timerComponents.push(
-            <span>
+            <span >
                 {timeLeft[interval]} {interval}{" "}
-            </span>
+            </span >
         );
     });
 
     function handleReset() {
-        console.log('clicked')
+        const timer = setTimeout(() => {
+            setTimeLeft(calculateTimeLeft())
+        }, 1000)
+
+        return () => clearTimeout(timer);
     }
 
     return (
         <div>
-            {timerComponents.length ? timerComponents : <span>Water Your Buddy!</span>}
-            <button onClick={handleReset}>reset</button>
+            {timerComponents.length ? timerComponents : <button onClick={handleReset}>Water Your Buddy!</button>}
+
             {/* <button onClick={props.handleStyleChange}>change color</button> */}
         </div>
     )

@@ -5,6 +5,8 @@ import { useState } from 'react';
 
 function Leaf(props) {
 
+
+
     // helper function to figure out next date from now
     function newDate(numDays) {
         const dateNow = new Date();
@@ -24,7 +26,7 @@ function Leaf(props) {
     const [leafStyle, setLeafStyle] = useState(true)
 
     const aliveTheme = {
-        background: 'blue',
+        background: 'green',
     }
 
     const deadTheme = {
@@ -40,14 +42,15 @@ function Leaf(props) {
     }
 
 
+
     return (
         <div>
             {props.leaf.buddies.map((plant, idx) =>
                 <div className={styles.Leaf} >
-                    <article key={idx} style={leafStyle === true ? aliveTheme : deadTheme}>
-                        <div>{plant.name}</div>
+                    <article key={idx} >
+                        <div style={leafStyle === true ? aliveTheme : deadTheme}>{plant.name}</div>
                         {/* <div>{plant.schedule} days</div> */}
-                        <Countdown2 schedule={plant.schedule} newDate={newDate} handleStyleChange={handleStyleChange} />
+                        <Countdown2 schedule={plant.schedule} handleStyleChange={handleStyleChange} />
                     </article>
                     {/* <Countdown schedule={plant.schedule} newDate={newDate} handleStyleChange={handleStyleChange} /> */}
                 </div>
