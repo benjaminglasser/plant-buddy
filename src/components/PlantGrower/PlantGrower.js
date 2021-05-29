@@ -22,7 +22,7 @@ const PlantGrower = (props) => {
         <>
             <div className="wrapper">
                 <div className="box">
-                    {props.leaf.buddies && (
+                    {props.leaf.buddies ? (
                         <>
                             <div className="stem">
                                 {props.leaf.buddies.map((plant, idx) =>
@@ -41,7 +41,7 @@ const PlantGrower = (props) => {
                                 )}
                             </div>
                         </>
-                    )}
+                    ) : "reload page"}
                     <div className="pot"></div>
                     <div className="pot-top"></div>
                 </div>

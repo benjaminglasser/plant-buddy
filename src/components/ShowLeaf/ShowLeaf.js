@@ -1,4 +1,5 @@
 
+import moment from 'moment'
 import './ShowLeaf.css'
 import React from 'react';
 import { useState, useEffect } from 'react'
@@ -78,7 +79,7 @@ export default function ShowLeaf(props) {
         const dateNow = new Date();
         let numberOfDaysToAdd = numDays;
 
-        dateNow.setDate(parseInt(day) + numberOfDaysToAdd - 1);
+        dateNow.setDate(parseInt(day) + numberOfDaysToAdd);
 
         let mm = dateNow.getMonth() + 1;
         let dd = dateNow.getDate();
@@ -147,7 +148,6 @@ export default function ShowLeaf(props) {
     };
 
 
-
     return (
         <div  >
 
@@ -157,7 +157,7 @@ export default function ShowLeaf(props) {
                 onClick={handleDrawerOpen}
                 className="ShowBtn"
             >
-                <div className={LEAF_STYLE} style={today === nextDate ? { backgroundColor: '#964B00' } : { backgroundColor: 'green' }}> {props.name}</div>
+                <div className={LEAF_STYLE} style={moment(today).isSameOrAfter(nextDate) ? { backgroundColor: '#964B00' } : { backgroundColor: 'green' }}> {props.name}</div>
 
             </div>
 
