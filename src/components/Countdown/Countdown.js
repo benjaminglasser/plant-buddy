@@ -1,7 +1,8 @@
 import styles from './Countdown.module.css'
-import { useRef, useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const Countdown = (props) => {
+
 
 
     // helper function to figure out next date from now
@@ -18,108 +19,73 @@ const Countdown = (props) => {
         return formattedDate;
     }
 
+    // main calculate function
+    const calculateTimeLeft = () => {
 
-    // creates state variables
-    const [timerDays, setTimerDays] = useState('')
-    const [timerHours, setTimerHours] = useState('')
-    const [timerMinutes, setTimerMinutes] = useState('')
-    const [timerSeconds, setTimerSeconds] = useState('')
+        //calculates the future date
+        let getFutureDate = newDate(props.schedule);
 
-    let interval = useRef();
-    let getFutureDate = useRef();
+        // calculates the difference in milliseconds from the future date to now
+        const difference = +new Date(
+            `${getFutureDate} 00:00:00`
+            // '05/27/2021 17:13:00'
+        ) - +new Date();
 
-    //Starts Timer
-    const startTimer = () => {
+        let timeLeft = {};
 
-        getFutureDate = newDate(props.schedule);
+        //converts to days, hours, minutes, sec
+        if (difference > 0) {
+            timeLeft = {
+                days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+                //comment this out
+                hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+                minutes: Math.floor((difference / 1000 / 60) % 60),
+                seconds: Math.floor((difference / 1000) % 60)
 
-        //Sets the date that you would like to countdown from 
-        // TODO: make the end date a variable
-        const countdownDate = new Date(`${getFutureDate} 00:00:00`).getTime();
-
-        // figures out how much time between final date and now
-        interval = setInterval(() => {
-            // gets time of now
-            const now = new Date().getTime()
-
-            //subtracts now from countdown date 
-            const distance = countdownDate - now
-
-            // calculates days, hours, minutes, seconds
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24) / (1000 * 60 * 60)));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // if timer is up then: TODO: set notification
-            if (distance <= 0) {
-                // stop timer
-                // props.handleStyleChange();
-                clearInterval(interval.current);
-
-            } else {
-                // update time
-                setTimerDays(days);
-                setTimerHours(hours);
-                setTimerMinutes(minutes);
-                setTimerSeconds(seconds);
-            }
-
-
-        }, 1000);
-    };
-
-
-
-    // componentDidMount
-    useEffect(() => {
-        startTimer();
-
-        return () => {
-            clearInterval(interval.current);
+            };
         }
-    })
 
-    //reset function
-    function handleReset() {
-
-        clearInterval(interval.current);
-        console.log('clicked')
-
+        return timeLeft;
 
     }
 
+    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setTimeLeft(calculateTimeLeft())
+        }, 1000)
+
+        return () => clearTimeout(timer);
+    })
+
+    const timerComponents = [];
+
+    Object.keys(timeLeft).forEach((interval, idx) => {
+        if (!timeLeft[interval]) {
+            return;
+        }
+
+        timerComponents.push(
+            <span key={idx}>
+                {timeLeft[interval]} {interval}{" "}
+            </span >
+        );
+    });
+
+    function handleReset() {
+        const timer = setTimeout(() => {
+            setTimeLeft(calculateTimeLeft())
+        }, 1000)
+
+        return () => clearTimeout(timer);
+    }
+
     return (
-        <div className={styles.CountdownCntr}>
-            <section className={styles.timerCntr}>
-                <section className={styles.timer}>
-                    <div className={styles.clock}>
-                        <section>
-                            <p>{timerDays}</p>
-                            <p><small>Days</small></p>
-                        </section>
-                        <span>:</span>
-                        <section>
-                            <p>{timerHours}</p>
-                            <p><small>Hours</small></p>
-                        </section>
-                        <span>:</span>
-                        <section>
-                            <p>{timerMinutes}</p>
-                            <p><small>Minutes</small></p>
-                        </section>
-                        <span>:</span>
-                        <section>
-                            <p>{timerSeconds}</p>
-                            <p><small>Seconds</small></p>
-                        </section>
-                        <button onClick={handleReset}>reset</button>
-                        {/* <button onClick={props.handleStyleChange}>change color</button> */}
+        <div className={styles.Cntr}>
+            {timerComponents.length ? timerComponents : <button onClick={handleReset}>Water Your Buddy!</button>}
 
-                    </div>
-
-                </section>
-            </section>
+            {/* <button onClick={props.handleStyleChange}>change color</button> */}
         </div>
     )
 }

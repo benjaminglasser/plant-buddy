@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Header from './components/Header/Header'
 import Plant from './components/Plant/Plant'
 import NewLeaf from './components/NewLeaf/NewLeaf'
-import { createBuddy, fetchBuddies } from './services/buddy-service'
+import { createBuddy, fetchBuddies, deleteBuddy } from './services/buddy-service'
 
 
 
@@ -48,6 +48,20 @@ function App() {
 
   }
 
+  // DELETE FUNCTION
+
+  async function handleDelete(id) {
+
+    const buddies = await deleteBuddy(id);
+
+    setLeaf(prevState => ({
+      ...prevState,
+      buddies,
+    }));
+
+
+  }
+
   // user state variables
   const [userState, setUserState] = useState({
     user: null
@@ -88,7 +102,13 @@ function App() {
     <div >
       <Header user={userState.user} />
       <NewLeaf leaf={leaf} handleSubmit={handleSubmit} handleChange={handleChange} />
-      <Plant leaf={leaf} setLeaf={setLeaf} handleSubmit={handleSubmit} handleChange={handleChange} />
+      <Plant
+        leaf={leaf}
+        setLeaf={setLeaf}
+        handleSubmit={handleSubmit}
+        handleChange={handleChange}
+        handleDelete={handleDelete}
+      />
 
     </div>
   );

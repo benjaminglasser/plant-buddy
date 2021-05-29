@@ -8,7 +8,11 @@ function Plant(props) {
 
         <div className={styles.main}>
             <div className={styles.plant}>
-                <Leafs className={styles.Plant} leaf={props.leaf} />
+                <Leafs
+                    className={styles.Plant}
+                    leaf={props.leaf}
+                    handleDelete={props.handleDelete}
+                />
             </div>
         </div >
 

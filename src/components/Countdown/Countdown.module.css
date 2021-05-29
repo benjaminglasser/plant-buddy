@@ -1,16 +1,3 @@
-.CountdownCntr {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.timer {
-  background: white;
-  margin: 30px;
-  padding: 10px;
-}
-
-.clock {
-  display: flex;
-  text-align: center;
+.Cntr {
+  color: black;
 }

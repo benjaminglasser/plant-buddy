@@ -14,7 +14,15 @@ function createBuddy(data) {
     }).then(res => res.json());
 }
 
+function deleteBuddy(id) {
+    return fetch(`${BASE_URL}/${id}`, {
+        method: 'DELETE'
+    }).then(res => res.json());
+
+}
+
 export {
     createBuddy,
-    fetchBuddies
+    fetchBuddies,
+    deleteBuddy
 }
