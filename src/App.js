@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Header from './components/Header/Header'
 import Plant from './components/Plant/Plant'
 import NewLeaf from './components/NewLeaf/NewLeaf'
-import { createBuddy, fetchBuddies, deleteBuddy } from './services/buddy-service'
+import { createBuddy, fetchBuddies, deleteBuddy, updateBuddy } from './services/buddy-service'
 
 
 
@@ -13,14 +13,12 @@ function App() {
 
   //Main State for leaf info
   const [leaf, setLeaf] = useState({
-    buddies: [{ name: 'tim', schedule: '7', createdAt: '2021-05-28T23:18:49.184Z' }],
+    buddies: [],
     newBuddy: {
       name: "",
       schedule: ""
     }
   })
-
-
 
   //New Leaf Submit
   async function handleSubmit(e) {
@@ -47,6 +45,59 @@ function App() {
     }))
 
   }
+
+  async function handleUpdate(id) {
+
+    //handle edit
+    const buddyToEdit = leaf.buddies.find(leaf => leaf._id === id)
+
+    setLeaf(prevState => ({
+      ...prevState,
+      newBuddy: {
+        name: buddyToEdit.name,
+        schedule: buddyToEdit.schedule
+      }
+    }))
+
+
+
+    // {
+    //   leaf.newBuddy.name == buddyToEdit.name ?
+    //     console.log(leaf.newBuddy) :
+    //     console.log('hi')
+
+    // }
+    if (leaf.newBuddy.name !== "") {
+
+      const { _id, name, schedule } = leaf.newBuddy
+      try {
+        const buddy = await fetch(`http://localhost:3001/api/buddies/${id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-type': 'Application/json'
+          },
+          body: JSON.stringify({ name, schedule })
+        }).then(res => res.json())
+
+        setLeaf({
+          buddy,
+          newBuddy: {
+            name: "",
+            schedule: ""
+          }
+        })
+
+        console.log('hi')
+
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    // handle update
+
+  }
+
+
 
   // DELETE FUNCTION
 
@@ -99,17 +150,21 @@ function App() {
 
 
   return (
-    <div >
+    <div>
       <Header user={userState.user} />
-      <NewLeaf leaf={leaf} handleSubmit={handleSubmit} handleChange={handleChange} />
-      <Plant
-        leaf={leaf}
-        setLeaf={setLeaf}
-        handleSubmit={handleSubmit}
-        handleChange={handleChange}
-        handleDelete={handleDelete}
-      />
-
+      {leaf && (
+        <>
+          <NewLeaf leaf={leaf} handleSubmit={handleSubmit} handleChange={handleChange} />
+          <Plant
+            leaf={leaf}
+            setLeaf={setLeaf}
+            handleSubmit={handleSubmit}
+            handleChange={handleChange}
+            handleDelete={handleDelete}
+            handleUpdate={handleUpdate}
+          />
+        </>
+      )}
     </div>
   );
 }

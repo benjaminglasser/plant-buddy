@@ -19,6 +19,7 @@ function Plant(props) {
                     className={styles.plant}
                     leaf={props.leaf}
                     handleDelete={props.handleDelete}
+                    handleUpdate={props.handleUpdate}
                 />
 
             </div>

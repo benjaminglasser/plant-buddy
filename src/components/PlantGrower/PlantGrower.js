@@ -22,21 +22,26 @@ const PlantGrower = (props) => {
         <>
             <div className="wrapper">
                 <div className="box">
-                    <div className="stem">
-                        {props.leaf.buddies.map((plant, idx) =>
-                            <div key={idx}>
-                                <ShowLeaf
-                                    created={plant.createdAt}
-                                    name={plant.name}
-                                    schedule={plant.schedule}
-                                    plantId={plant._id}
-                                    handleDelete={props.handleDelete}
-                                    idx={idx}
-                                />
-                                {/* <div className="leaf1"></div> */}
+                    {props.leaf.buddies && (
+                        <>
+                            <div className="stem">
+                                {props.leaf.buddies.map((plant, idx) =>
+                                    <div key={idx}>
+                                        <ShowLeaf
+                                            created={plant.updatedAt}
+                                            name={plant.name}
+                                            schedule={plant.schedule}
+                                            plantId={plant._id}
+                                            handleDelete={props.handleDelete}
+                                            idx={idx}
+                                            handleUpdate={props.handleUpdate}
+                                        />
+                                        {/* <div className="leaf1"></div> */}
+                                    </div>
+                                )}
                             </div>
-                        )}
-                    </div>
+                        </>
+                    )}
                     <div className="pot"></div>
                     <div className="pot-top"></div>
                 </div>

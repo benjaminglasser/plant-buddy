@@ -21,8 +21,19 @@ function deleteBuddy(id) {
 
 }
 
+// function updateBuddy({ name, schedule, _id }) {
+//     return fetch(`${BASE_URL}/${_id}`, {
+//         method: 'PUT',
+//         headers: {
+//             'Content-type': 'Application/json'
+//         },
+//         body: JSON.stringify({ name, schedule })
+//     }).then(res => res.json());
+// }
+
 export {
     createBuddy,
     fetchBuddies,
-    deleteBuddy
+    deleteBuddy,
+    // updateBuddy
 }

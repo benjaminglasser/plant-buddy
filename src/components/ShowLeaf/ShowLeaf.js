@@ -50,33 +50,35 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ShowLeaf(props) {
     // created at timestamp
-    const [date, setDate] = useState('2021-05-28T23:18:49.184Z')
+    const [date, setDate] = useState(props.created)
 
-    useEffect(() => {
-        setDate(props.created)
-    }, [])
-
+    const [day, setDay] = useState()
 
     // console.log(date, props.name);
 
-    let created = date.split('-')[2]
-    let day = created.split('T')[0]
+    // let created = date.split('-')[2]
+    // let day = created.split('T')[0]
 
     // console.log(day)
 
 
     // convert timestamp into similar format
 
-
-
     // helper function to figure out next date from now
+    useEffect(() => {
+        let created = date.split('-')[2]
+        let day = created.split('T')[0]
+        setDay(day)
+    }, [date])
+
+
     function newDate(numDays) {
 
         // let day = '33';
         const dateNow = new Date();
         let numberOfDaysToAdd = numDays;
 
-        dateNow.setDate(parseInt(day) + numberOfDaysToAdd);
+        dateNow.setDate(parseInt(day) + numberOfDaysToAdd - 1);
 
         let mm = dateNow.getMonth() + 1;
         let dd = dateNow.getDate();
@@ -84,6 +86,7 @@ export default function ShowLeaf(props) {
 
         let formattedDate = `${mm}/${dd}/${y}`;
         return formattedDate;
+
     }
 
     function todaysDate() {
@@ -102,6 +105,8 @@ export default function ShowLeaf(props) {
 
     }
 
+
+
     const [nextDate, setNextDate] = useState(calculateTimeLeft());
 
     useEffect(() => {
@@ -119,6 +124,7 @@ export default function ShowLeaf(props) {
 
 
 
+
     // convert idx into true or false
     function convert(num) {
         let result = num % 2 === 0 ? 0 : 1
@@ -130,7 +136,7 @@ export default function ShowLeaf(props) {
 
     const classes = useStyles();
     // const theme = useTheme();
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -139,6 +145,8 @@ export default function ShowLeaf(props) {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
+
 
     return (
         <div  >
@@ -175,17 +183,20 @@ export default function ShowLeaf(props) {
 
                 <List>
                     <div className="Show">
+
                         <h1>{props.name}</h1>
                         <p>Needs a drink every {props.schedule} days</p>
                         <Countdown2
                             schedule={props.schedule}
                             today={today}
                             nextDate={nextDate}
-                            created={props.created}
+
                         />
                         <div onClick={handleDrawerClose}>
                             <div className="Trash" onClick={() => props.handleDelete(props.plantId)}>DELETE</div>
                         </div>
+
+                        <div onClick={() => props.handleUpdate(props.plantId)} className="Trash" >Water Buddy</div>
                     </div>
                 </List>
 

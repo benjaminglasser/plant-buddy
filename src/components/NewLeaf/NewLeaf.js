@@ -99,6 +99,7 @@ export default function NewLeaf(props) {
                 <List>
                     <div>
                         <form className={styles.input} onSubmit={props.handleSubmit}>
+                            <h1>New Buddy!</h1>
                             <input value={props.leaf.newBuddy.name} name="name" placeholder="Enter Name" onChange={props.handleChange} />
                             <input value={props.leaf.newBuddy.schedule} name="schedule" placeholder="days" className={styles.days} onChange={props.handleChange} />
                             <button onClick={handleDrawerClose}>submit</button>
