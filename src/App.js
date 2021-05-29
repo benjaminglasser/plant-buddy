@@ -13,7 +13,7 @@ function App() {
 
   //Main State for leaf info
   const [leaf, setLeaf] = useState({
-    buddies: [{}],
+    buddies: [{ name: 'tim', schedule: '7', createdAt: '2021-05-28T23:18:49.184Z' }],
     newBuddy: {
       name: "",
       schedule: ""

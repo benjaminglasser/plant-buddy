@@ -41,7 +41,8 @@
   height: 600px;
   left: 49%;
   bottom: 20%;
-  background: #70b77e;
+  background: green;
+  border-radius: 20%;
 }
 
 /* --- ANIMATION --- */

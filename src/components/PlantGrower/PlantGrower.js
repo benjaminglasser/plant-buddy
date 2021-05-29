@@ -1,18 +1,18 @@
 import "./PlantGrower.css"
-import $ from 'jquery'
+
 import { useEffect } from 'react'
 import ShowLeaf from '../ShowLeaf/ShowLeaf'
 
 const PlantGrower = (props) => {
 
     // grow function
-    function handleDrop() {
-        $(".stem").addClass("rain");
+    // function handleDrop() {
+    //     $(".stem").addClass("rain");
 
-        setTimeout(function () {
-            $('.stem').removeClass('rain');
-        }, 1200);
-    };
+    //     setTimeout(function () {
+    //         $('.stem').removeClass('rain');
+    //     }, 1200);
+    // };
 
     // useEffect(() => {
     //     handleDrop()
@@ -24,8 +24,9 @@ const PlantGrower = (props) => {
                 <div className="box">
                     <div className="stem">
                         {props.leaf.buddies.map((plant, idx) =>
-                            <div>
+                            <div key={idx}>
                                 <ShowLeaf
+                                    created={plant.createdAt}
                                     name={plant.name}
                                     schedule={plant.schedule}
                                     plantId={plant._id}
@@ -40,7 +41,7 @@ const PlantGrower = (props) => {
                     <div className="pot-top"></div>
                 </div>
             </div>
-            <div onClick={handleDrop} className="drop"></div>
+            <div className="drop"></div>
         </>
     )
 }

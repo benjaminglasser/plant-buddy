@@ -1,3 +1,4 @@
+
 import './ShowLeaf.css'
 import React from 'react';
 import { useState, useEffect } from 'react'
@@ -48,12 +49,34 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ShowLeaf(props) {
+    // created at timestamp
+    const [date, setDate] = useState('2021-05-28T23:18:49.184Z')
+
+    useEffect(() => {
+        setDate(props.created)
+    }, [])
+
+
+    // console.log(date, props.name);
+
+    let created = date.split('-')[2]
+    let day = created.split('T')[0]
+
+    // console.log(day)
+
+
+    // convert timestamp into similar format
+
+
 
     // helper function to figure out next date from now
     function newDate(numDays) {
+
+        // let day = '33';
         const dateNow = new Date();
         let numberOfDaysToAdd = numDays;
-        dateNow.setDate(dateNow.getDate() + numberOfDaysToAdd);
+
+        dateNow.setDate(parseInt(day) + numberOfDaysToAdd);
 
         let mm = dateNow.getMonth() + 1;
         let dd = dateNow.getDate();
@@ -126,7 +149,7 @@ export default function ShowLeaf(props) {
                 onClick={handleDrawerOpen}
                 className="ShowBtn"
             >
-                <div className={LEAF_STYLE} style={today === nextDate ? { backgroundColor: 'grey' } : { backgroundColor: 'green' }}> {props.name}</div>
+                <div className={LEAF_STYLE} style={today === nextDate ? { backgroundColor: '#964B00' } : { backgroundColor: 'green' }}> {props.name}</div>
 
             </div>
 
@@ -158,6 +181,7 @@ export default function ShowLeaf(props) {
                             schedule={props.schedule}
                             today={today}
                             nextDate={nextDate}
+                            created={props.created}
                         />
                         <div onClick={handleDrawerClose}>
                             <div className="Trash" onClick={() => props.handleDelete(props.plantId)}>DELETE</div>
