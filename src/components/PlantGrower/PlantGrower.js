@@ -2,6 +2,7 @@ import "./PlantGrower.css"
 
 import { useEffect } from 'react'
 import ShowLeaf from '../ShowLeaf/ShowLeaf'
+import ShowLeaf2 from '../ShowLeaf2/ShowLeaf2'
 
 const PlantGrower = (props) => {
 
@@ -28,7 +29,16 @@ const PlantGrower = (props) => {
                             <div className="stem">
                                 {props.leaf.buddies.map((plant, idx) =>
                                     <div key={idx}>
-                                        <ShowLeaf
+                                        {/* <ShowLeaf
+                                            created={plant.updatedAt}
+                                            name={plant.name}
+                                            schedule={plant.schedule}
+                                            plantId={plant._id}
+                                            handleDelete={props.handleDelete}
+                                            idx={idx}
+                                            handleUpdate={props.handleUpdate}
+                                        /> */}
+                                        <ShowLeaf2
                                             created={plant.updatedAt}
                                             name={plant.name}
                                             schedule={plant.schedule}

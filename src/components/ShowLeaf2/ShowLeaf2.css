@@ -1,7 +1,6 @@
-/* .addCntr {
-  background: blue;
-  width: 100px;
-} */
+.Show {
+  background: #add8e6;
+}
 
 .Show {
   display: flex;
@@ -18,6 +17,7 @@
   cursor: pointer;
   background: yellow;
   padding: 10px;
+  margin: 20px;
 }
 
 .leaf0 {

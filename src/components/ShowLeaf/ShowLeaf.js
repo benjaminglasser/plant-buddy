@@ -1,4 +1,3 @@
-
 import moment from 'moment'
 import './ShowLeaf.css'
 import React from 'react';
@@ -157,7 +156,7 @@ export default function ShowLeaf(props) {
                 onClick={handleDrawerOpen}
                 className="ShowBtn"
             >
-                <div className={LEAF_STYLE} style={moment(today).isSameOrAfter(nextDate) ? { backgroundColor: '#964B00' } : { backgroundColor: 'green' }}> {props.name}</div>
+                <div className={LEAF_STYLE} style={moment(today).isSameOrAfter(nextDate) ? { backgroundColor: '#e6ba8e' } : { backgroundColor: 'rgb(180,210,140)' }}> {props.name}</div>
 
             </div>
 
@@ -166,7 +165,7 @@ export default function ShowLeaf(props) {
 
             <Drawer
                 className={classes.drawer}
-                variant="persistent"
+
                 anchor="right"
                 open={open}
                 classes={{
