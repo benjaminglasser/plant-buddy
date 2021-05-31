@@ -46,6 +46,7 @@ const PlantGrower = (props) => {
                                             handleDelete={props.handleDelete}
                                             idx={idx}
                                             handleUpdate={props.handleUpdate}
+                                            handleEdit={props.handleEdit}
                                         />
 
                                     </div>

@@ -20,6 +20,7 @@ function Plant(props) {
                     leaf={props.leaf}
                     handleDelete={props.handleDelete}
                     handleUpdate={props.handleUpdate}
+                    handleEdit={props.handleEdit}
                 />
 
             </div>

@@ -3,7 +3,6 @@ import moment from 'moment'
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 
 import { useState, useEffect } from 'react';
@@ -52,7 +51,7 @@ export default function ShowLeaf2(props) {
         const dateNow = new Date();
         let numberOfDaysToAdd = numDays;
 
-        dateNow.setDate(parseInt(day) + numberOfDaysToAdd);
+        dateNow.setDate(parseInt(day) + numberOfDaysToAdd - 1);
 
         let mm = dateNow.getMonth() + 1;
         let dd = dateNow.getDate();
@@ -95,7 +94,7 @@ export default function ShowLeaf2(props) {
 
 
 
-
+    // console.log(nextDate)
 
 
 
@@ -162,7 +161,7 @@ export default function ShowLeaf2(props) {
     );
 
     return (
-        <div >
+        <div onClick={() => props.handleEdit(props.plantId)}>
             {['right'].map((anchor) => (
                 <React.Fragment key={anchor}>
                     {/* <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button> */}

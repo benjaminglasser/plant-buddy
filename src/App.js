@@ -46,9 +46,7 @@ function App() {
 
   }
 
-  async function handleUpdate(id) {
-
-    //handle edit
+  function handleEdit(id) {
     const buddyToEdit = leaf.buddies.find(leaf => leaf._id === id)
 
     setLeaf(prevState => ({
@@ -59,6 +57,12 @@ function App() {
       }
     }))
 
+    console.log(leaf.newBuddy.name)
+  }
+
+  async function handleUpdate(id) {
+
+    //handle edit
 
 
     // {
@@ -162,6 +166,7 @@ function App() {
             handleChange={handleChange}
             handleDelete={handleDelete}
             handleUpdate={handleUpdate}
+            handleEdit={handleEdit}
           />
         </>
       )}
