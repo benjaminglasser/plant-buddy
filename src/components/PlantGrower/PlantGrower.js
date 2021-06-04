@@ -29,15 +29,7 @@ const PlantGrower = (props) => {
                             <div className="stem">
                                 {props.leaf.buddies.map((plant, idx) =>
                                     <div key={idx}>
-                                        {/* <ShowLeaf
-                                            created={plant.updatedAt}
-                                            name={plant.name}
-                                            schedule={plant.schedule}
-                                            plantId={plant._id}
-                                            handleDelete={props.handleDelete}
-                                            idx={idx}
-                                            handleUpdate={props.handleUpdate}
-                                        /> */}
+
                                         <ShowLeaf2
                                             created={plant.updatedAt}
                                             name={plant.name}
@@ -59,7 +51,7 @@ const PlantGrower = (props) => {
                     <div className="pot-top"></div>
                 </div>
             </div>
-            <div className="drop"></div>
+
         </>
     )
 }

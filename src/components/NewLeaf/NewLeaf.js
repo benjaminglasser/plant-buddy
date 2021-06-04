@@ -68,15 +68,19 @@ export default function NewLeaf(props) {
 
             <div className={styles.addCntr}>
                 <div className={styles.add}>
-                    <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        edge="end"
-                        onClick={handleDrawerOpen}
-                        className={clsx(open && classes.hide)}
-                    >
-                        <AddIcon />
-                    </IconButton>
+                    <div className={styles.drop}>
+                        <IconButton
+                            color="inherit"
+                            aria-label="open drawer"
+                            edge="end"
+                            onClick={handleDrawerOpen}
+                            className={clsx(open && classes.hide)}
+                        >
+                            <div className={styles.plus}>
+                                <AddIcon />
+                            </div>
+                        </IconButton>
+                    </div>
                 </div>
             </div>
 
@@ -109,7 +113,7 @@ export default function NewLeaf(props) {
 
 
             </Drawer>
-        </div>
+        </div >
     );
 }
 
