@@ -33,6 +33,12 @@ function App() {
         schedule: ""
       }
     })
+
+    // set form to empty string
+
+
+
+
   }
 
   function handleChange(e) {
