@@ -9,15 +9,7 @@ function Leaf(props) {
 
     // leaf styles
 
-    const aliveTheme = {
-        background: 'green',
-    }
 
-    const deadTheme = {
-        background: 'brown',
-    }
-
-    const [leafStyle, setLeafStyle] = useState(aliveTheme)
 
 
 

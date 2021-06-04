@@ -27,15 +27,6 @@ export default function ShowLeaf2(props) {
 
     const [day, setDay] = useState()
 
-    // console.log(date, props.name);
-
-    // let created = date.split('-')[2]
-    // let day = created.split('T')[0]
-
-    // console.log(day)
-
-
-    // convert timestamp into similar format
 
     // helper function to figure out next date from now
     useEffect(() => {
@@ -154,7 +145,7 @@ export default function ShowLeaf2(props) {
                     <div className="Trash" onClick={() => props.handleDelete(props.plantId)}>DELETE</div>
 
 
-                    <div onClick={() => props.handleUpdate(props.plantId)} className="Trash" >Water Buddy</div>
+                    {/* <div onClick={() => props.handleUpdate(props.plantId)} className="Trash" >Water Buddy</div> */}
                 </div>
             </List>
         </div >
