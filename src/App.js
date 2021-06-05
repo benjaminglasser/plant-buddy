@@ -40,6 +40,7 @@ function App() {
       }
     })
 
+    setImage('')
     // TODO: set form to empty string
 
 
@@ -55,7 +56,7 @@ function App() {
       }
     }))
 
-    console.log(e)
+
 
   }
 
@@ -105,7 +106,7 @@ function App() {
           }
         })
 
-        console.log('hi')
+
 
       } catch (error) {
         console.log(error)

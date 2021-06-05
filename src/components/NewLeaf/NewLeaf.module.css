@@ -43,7 +43,7 @@ button:hover {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin: 40px;
+  margin: 30px;
 }
 
 .input > * {
@@ -69,4 +69,12 @@ button:hover {
 
 .plus {
   transform: rotateZ(-45deg);
+}
+
+.imgSubmit {
+  display: flex;
+  justify-content: center;
+
+  width: 350px;
+  margin: 0;
 }

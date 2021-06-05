@@ -139,13 +139,16 @@ export default function NewLeaf(props) {
                             <p> What does your buddy look like?</p>
 
 
-                            <input type="file" onChange={(e) => {
-                                setImageSelected(e.target.files[0])
-                            }}></input>
+                            <div className={styles.imgSubmit}>
+                                <input type="file" onChange={(e) => {
+                                    setImageSelected(e.target.files[0])
+                                }}></input>
+                                <button onClick={uploadImage}>Upload</button>
+                            </div>
 
-                            <button onClick={uploadImage}>Upload Image</button>
 
-                            <div onChange={props.handleChange}>
+
+                            <div >
                                 <Image
                                     cloudName="dyaerfbes"
                                     publicId={props.image}
