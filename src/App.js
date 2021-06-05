@@ -34,9 +34,7 @@ function App() {
       }
     })
 
-    // set form to empty string
-
-
+    // TODO: set form to empty string
 
 
   }
