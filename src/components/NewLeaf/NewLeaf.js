@@ -1,5 +1,5 @@
 import styles from './NewLeaf.module.css'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -7,6 +7,7 @@ import List from '@material-ui/core/List';
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 import Axios from 'axios'
+import { Image } from 'cloudinary-react'
 
 
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -75,10 +76,13 @@ export default function NewLeaf(props) {
             "https://api.cloudinary.com/v1_1/dyaerfbes/image/upload",
             formData
         ).then((res) => {
-            console.log(res)
+            props.setImage(res.data.url);
         })
     };
 
+    useEffect(function () {
+        props.leaf.newBuddy.img = props.image
+    }, [props.image])
 
 
     return (
@@ -133,10 +137,21 @@ export default function NewLeaf(props) {
                             {/* Image Feat */}
 
                             <p> What does your buddy look like?</p>
+
+
                             <input type="file" onChange={(e) => {
                                 setImageSelected(e.target.files[0])
                             }}></input>
+
                             <button onClick={uploadImage}>Upload Image</button>
+
+                            <div onChange={props.handleChange}>
+                                <Image
+                                    cloudName="dyaerfbes"
+                                    publicId={props.image}
+                                />
+                            </div>
+
                             <div onClick={props.handleSubmit}>
 
                                 <button onClick={handleDrawerClose}>submit</button>

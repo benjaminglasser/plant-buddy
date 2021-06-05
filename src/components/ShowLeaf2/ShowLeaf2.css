@@ -69,3 +69,9 @@
   width: 82px;
   cursor: pointer;
 }
+
+.photo {
+  width: 100vw;
+  border-radius: 40%;
+  border-color: red;
+}

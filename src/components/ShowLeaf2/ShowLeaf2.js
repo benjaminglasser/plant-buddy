@@ -132,6 +132,9 @@ export default function ShowLeaf2(props) {
                 <div className="Show" >
 
                     <h1>{props.name}</h1>
+                    <div >
+                        {props.img ? <img src={props.img} alt="plant" /> : ''}
+                    </div>
                     <p>Needs a drink every {props.schedule} days</p>
                     <Countdown2
                         schedule={props.schedule}

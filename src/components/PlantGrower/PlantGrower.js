@@ -33,6 +33,7 @@ const PlantGrower = (props) => {
                                         <ShowLeaf2
                                             created={plant.updatedAt}
                                             name={plant.name}
+                                            img={plant.img}
                                             schedule={plant.schedule}
                                             plantId={plant._id}
                                             handleDelete={props.handleDelete}

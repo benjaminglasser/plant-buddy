@@ -10,15 +10,20 @@ import { createBuddy, fetchBuddies, deleteBuddy, updateBuddy } from './services/
 
 function App() {
 
+  const [image, setImage] = useState('')
 
   //Main State for leaf info
   const [leaf, setLeaf] = useState({
     buddies: [],
     newBuddy: {
       name: "",
-      schedule: ""
+      schedule: "",
+      img: "",
     }
   })
+
+
+
 
   //New Leaf Submit
   async function handleSubmit(e) {
@@ -30,7 +35,8 @@ function App() {
       buddies: [...leaf.buddies, buddy],
       newBuddy: {
         name: "",
-        schedule: ""
+        schedule: "",
+        img: "",
       }
     })
 
@@ -44,9 +50,12 @@ function App() {
       ...prevState,
       newBuddy: {
         ...prevState.newBuddy,
-        [e.target.name]: e.target.value
+        [e.target.name]: e.target.value,
+
       }
     }))
+
+    console.log(e)
 
   }
 
@@ -91,7 +100,8 @@ function App() {
           buddy,
           newBuddy: {
             name: "",
-            schedule: ""
+            schedule: "",
+            img: ""
           }
         })
 
@@ -162,7 +172,13 @@ function App() {
       <Header user={userState.user} />
       {leaf && (
         <>
-          <NewLeaf leaf={leaf} handleSubmit={handleSubmit} handleChange={handleChange} />
+          <NewLeaf
+            leaf={leaf}
+            handleSubmit={handleSubmit}
+            handleChange={handleChange}
+            image={image}
+            setImage={setImage}
+          />
           <Plant
             leaf={leaf}
             setLeaf={setLeaf}
