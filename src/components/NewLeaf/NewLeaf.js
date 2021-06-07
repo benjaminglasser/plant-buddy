@@ -129,10 +129,12 @@ export default function NewLeaf(props) {
                         <div className={styles.input} >
                             <h1 style={{ marginBottom: '30px' }}>New Buddy!</h1>
                             <p> What's your buddies name?</p>
-                            <input autocomplete="off" value={props.leaf.newBuddy.name} name="name" placeholder="Enter Name" onChange={props.handleChange} />
+                            <input className="text" autocomplete="off" name="name" placeholder="Enter Name" onChange={props.handleChange} />
 
                             <p> How often does your buddy nead a drink?</p>
-                            <input autocomplete="off" value={props.leaf.newBuddy.schedule} name="schedule" placeholder="days" className={styles.days} onChange={props.handleChange} />
+
+                            <input autocomplete="off" name="schedule" placeholder="days" className="text" onChange={props.handleChange} />
+
 
                             {/* Image Feat */}
 

@@ -5,6 +5,7 @@ import Header from './components/Header/Header'
 import Plant from './components/Plant/Plant'
 import NewLeaf from './components/NewLeaf/NewLeaf'
 import { createBuddy, fetchBuddies, deleteBuddy, updateBuddy } from './services/buddy-service'
+import $ from 'jquery'
 
 
 
@@ -42,6 +43,8 @@ function App() {
 
     setImage('')
     // TODO: set form to empty string
+    $('.text').val('');
+    $('.text').val('');
 
 
   }
@@ -71,7 +74,7 @@ function App() {
       }
     }))
 
-    console.log(leaf.newBuddy.name)
+    // console.log(leaf.newBuddy.name)
   }
 
   async function handleUpdate(id) {
