@@ -162,7 +162,10 @@ export default function ShowLeaf2(props) {
                 {['right'].map((anchor) => (
                     <React.Fragment key={anchor}>
                         {/* <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button> */}
-                        <div onClick={toggleDrawer(anchor, true)} className={LEAF_STYLE} style={moment(today).isSameOrAfter(nextDate) ? { backgroundColor: '#e6ba8e' } : { backgroundColor: 'rgb(180,210,140)' }}> {props.name}</div>
+                        <div onClick={toggleDrawer(anchor, true)} className={LEAF_STYLE} style={moment(today).isSameOrAfter(nextDate) ? { backgroundColor: '#e6ba8e' } : { backgroundColor: 'rgb(180,210,140)' }}>
+                            <span className="leafText">
+                                {props.name}
+                            </span></div>
 
 
                         <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>

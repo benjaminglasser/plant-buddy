@@ -32,7 +32,6 @@
   height: 50px;
   color: white;
   border-radius: 50%;
-  font-size: 0px;
 
   transform: rotate(15deg) translateX(23px) translateY(20px);
   display: flex;
@@ -54,14 +53,13 @@
   cursor: pointer;
   height: 52px;
   width: 82px;
-  font-size: 15px;
 }
 
 .leaf1 {
   width: 80px;
   height: 50px;
   color: white;
-  font-size: 0px;
+
   /* border-radius: 50%; */
 
   transform: rotate(30deg) translateX(-78px) translateY(39px);
@@ -83,7 +81,6 @@
   height: 52px;
   width: 82px;
   cursor: pointer;
-  font-size: 15px;
 }
 
 .photo {
@@ -100,4 +97,14 @@
 
   100% {
   }
+}
+
+.leafText {
+  opacity: 0;
+}
+
+.leafText:hover {
+  opacity: 1;
+  transition: ease-out 0.5s;
+  text-align: center;
 }
