@@ -38,6 +38,13 @@ button:hover {
   background-color: #737495;
 }
 
+.submit {
+  padding: 20px;
+  background-color: #9cc269;
+  border-radius: 35px 0px 35px 0px;
+  font-size: 20px;
+}
+
 .input {
   display: flex;
   align-items: center;

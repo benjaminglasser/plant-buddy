@@ -1,5 +1,6 @@
-.Show {
-  background: #add8e6;
+.showCntr {
+  position: relative;
+  width: 600px;
 }
 
 .Show {
@@ -15,28 +16,37 @@
 
 .Trash {
   cursor: pointer;
-  background: yellow;
-  padding: 10px;
-  margin: 20px;
+  background: rgb(235, 124, 124);
+  padding: 10px 50px;
+  color: white;
+  position: absolute;
+  top: 850px;
+}
+
+.Trash:hover {
+  background: rgb(214, 96, 96);
 }
 
 .leaf0 {
   width: 80px;
   height: 50px;
-
+  color: white;
   border-radius: 50%;
+  font-size: 0px;
 
   transform: rotate(15deg) translateX(23px) translateY(20px);
   display: flex;
   justify-content: center;
   align-items: center;
 
-  border-radius: 2em 0em 2em 0em;
+  border-radius: 35px 0px 35px 0px;
   /* box-shadow: 0 0 0 0.2em darkgreen inset; */
   /* z-index: 0; */
   top: 1em;
   left: 0.5em;
   margin-top: -20px;
+  transition: ease-out 0.2s;
+  animation: grow 2s ease-in 1;
 }
 
 .leaf0:hover {
@@ -44,11 +54,14 @@
   cursor: pointer;
   height: 52px;
   width: 82px;
+  font-size: 15px;
 }
 
 .leaf1 {
   width: 80px;
   height: 50px;
+  color: white;
+  font-size: 0px;
   /* border-radius: 50%; */
 
   transform: rotate(30deg) translateX(-78px) translateY(39px);
@@ -56,11 +69,13 @@
   justify-content: center;
   align-items: center;
 
-  border-radius: 2em 0em 2em 0em;
+  border-radius: 35px 0px 35px 0px;
   /* box-shadow: 0 0 0 0.2em darkgreen inset; */
   /* z-index: 0; */
   top: 1em;
   left: 0.5em;
+  transition: ease-out 0.2s;
+  animation: grow 2s ease-in 1;
 }
 
 .leaf1:hover {
@@ -68,10 +83,21 @@
   height: 52px;
   width: 82px;
   cursor: pointer;
+  font-size: 15px;
 }
 
 .photo {
-  width: 100vw;
-  border-radius: 40%;
-  border-color: red;
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes leafGrow {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+  }
 }

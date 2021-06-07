@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
-
+import './ShowLeaf2.css'
 import { useState, useEffect } from 'react';
 import Countdown2 from '../Countdown2/Countdown2'
 
@@ -12,11 +12,8 @@ const useStyles = makeStyles({
     list: {
         width: 400,
         backgroundColor: '#add8e6',
-        height: '100vh'
-    },
-    fullList: {
-        width: 'auto',
-        backgroundColor: '#add8e6'
+        height: '100vh',
+        position: 'relative'
     },
 
 });
@@ -118,6 +115,10 @@ export default function ShowLeaf2(props) {
     };
 
     const list = (anchor) => (
+
+
+
+
         <div
             className={clsx(classes.list, {
                 [classes.fullList]: anchor === 'top' || anchor === 'bottom',
@@ -132,8 +133,8 @@ export default function ShowLeaf2(props) {
                 <div className="Show" >
 
                     <h1>{props.name}</h1>
-                    <div >
-                        {props.img ? <img src={props.img} alt="plant" /> : ''}
+                    <div className="img" >
+                        {props.img ? <img className="photo" src={props.img} alt="plant" /> : ''}
                     </div>
                     <p>Needs a drink every {props.schedule} days</p>
                     <Countdown2
@@ -152,23 +153,29 @@ export default function ShowLeaf2(props) {
                 </div>
             </List>
         </div >
+
     );
 
     return (
-        <div onClick={() => props.handleEdit(props.plantId)}>
-            {['right'].map((anchor) => (
-                <React.Fragment key={anchor}>
-                    {/* <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button> */}
-                    <div onClick={toggleDrawer(anchor, true)} className={LEAF_STYLE} style={moment(today).isSameOrAfter(nextDate) ? { backgroundColor: '#e6ba8e' } : { backgroundColor: 'rgb(180,210,140)' }}> {props.name}</div>
-                    <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
-                        {list(anchor)}
-                    </Drawer>
-                </React.Fragment>
-            ))}
+        <div className="showCntr">
+            <div onClick={() => props.handleEdit(props.plantId)}>
+                {['right'].map((anchor) => (
+                    <React.Fragment key={anchor}>
+                        {/* <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button> */}
+                        <div onClick={toggleDrawer(anchor, true)} className={LEAF_STYLE} style={moment(today).isSameOrAfter(nextDate) ? { backgroundColor: '#e6ba8e' } : { backgroundColor: 'rgb(180,210,140)' }}> {props.name}</div>
 
 
+                        <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
+                            {list(anchor)}
+                        </Drawer>
+
+
+                    </React.Fragment>
+                ))}
+
+
+            </div>
         </div>
-
 
     );
 }

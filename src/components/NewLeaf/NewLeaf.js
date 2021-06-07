@@ -126,13 +126,13 @@ export default function NewLeaf(props) {
                     <div>
 
                         {/* Change this from form to div with submit button */}
-                        <div className={styles.input} autocomplete="off">
+                        <div className={styles.input} >
                             <h1 style={{ marginBottom: '30px' }}>New Buddy!</h1>
                             <p> What's your buddies name?</p>
-                            <input value={props.leaf.newBuddy.name} name="name" placeholder="Enter Name" onChange={props.handleChange} />
+                            <input autocomplete="off" value={props.leaf.newBuddy.name} name="name" placeholder="Enter Name" onChange={props.handleChange} />
 
                             <p> How often does your buddy nead a drink?</p>
-                            <input value={props.leaf.newBuddy.schedule} name="schedule" placeholder="days" className={styles.days} onChange={props.handleChange} />
+                            <input autocomplete="off" value={props.leaf.newBuddy.schedule} name="schedule" placeholder="days" className={styles.days} onChange={props.handleChange} />
 
                             {/* Image Feat */}
 
@@ -157,7 +157,7 @@ export default function NewLeaf(props) {
 
                             <div onClick={props.handleSubmit}>
 
-                                <button onClick={handleDrawerClose}>submit</button>
+                                <button className={styles.submit} onClick={handleDrawerClose}>submit</button>
                             </div>
                         </div>
                     </div>

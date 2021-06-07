@@ -11,7 +11,7 @@ const Countdown = (props) => {
 
             { moment(props.today).isSameOrBefore(props.nextDate) ?
                 <h3>Next watering date: {props.nextDate}</h3>
-                : <button onClick={() => props.handleUpdate(props.plantId)}>Water Your Buddy!</button>}
+                : <button className={styles.waterBuddy} onClick={() => props.handleUpdate(props.plantId)}>Water Your Buddy!</button>}
 
 
         </div>
