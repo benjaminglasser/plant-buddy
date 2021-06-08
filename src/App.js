@@ -45,6 +45,7 @@ function App() {
     // TODO: set form to empty string
     $('.text').val('');
     $('.text').val('');
+    $('.submit')
 
 
   }

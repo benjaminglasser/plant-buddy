@@ -38,8 +38,8 @@
 .stem {
   /* position: absolute; */
   width: 2%;
-  height: 370px;
-
+  height: auto;
+  padding-bottom: 100px;
   background: rgb(180, 210, 140);
   border-radius: 20%;
 }
@@ -52,7 +52,7 @@
 
   border-radius: 50%;
 
-  transform: translateY(-60%) translateX(-40%);
+  transform: translateY(-60%) translateX(-42%);
   transition: all 0.2s ease-in-out;
   animation: ripple 10s 0.2s infinite;
 
@@ -83,7 +83,7 @@
 /* ANIMATION */
 
 .plant {
-  animation: grow 1s ease-in 1;
+  animation: grow 1s ease-in-out 1;
   position: absolute;
   bottom: 120px;
   left: 49%;

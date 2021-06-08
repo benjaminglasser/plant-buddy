@@ -38,7 +38,6 @@ export default function ShowLeaf2(props) {
         // let day = '33';
         const dateNow = new Date();
         let numberOfDaysToAdd = numDays;
-
         dateNow.setDate(parseInt(day) + numberOfDaysToAdd - 1);
 
         let mm = dateNow.getMonth() + 1;
