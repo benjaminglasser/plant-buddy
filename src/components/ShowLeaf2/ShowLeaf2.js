@@ -22,32 +22,52 @@ export default function ShowLeaf2(props) {
 
     const [date, setDate] = useState(props.created)
 
-    const [day, setDay] = useState()
+    const [startDay, setStartDay] = useState()
 
 
     // helper function to figure out next date from now
     useEffect(() => {
-        let created = date.split('-')[2]
-        let day = created.split('T')[0]
-        setDay(day)
+        let day = moment(date).format('MM/DD/YYYY')
+        setStartDay(day)
+        console.log(startDay)
     }, [date])
 
+    // console.log(startDay)
 
     function newDate(numDays) {
 
         // let day = '33';
-        const dateNow = new Date();
+        // const dateNow = new Date();
         let numberOfDaysToAdd = numDays;
-        dateNow.setDate(parseInt(day) + numberOfDaysToAdd - 1);
 
-        let mm = dateNow.getMonth() + 1;
-        let dd = dateNow.getDate();
-        let y = dateNow.getFullYear();
+        let new_date = moment(startDay, "MM-DD-YYYY").add('days', numberOfDaysToAdd);
+
+        let mm = new_date.format('MM');
+        let dd = new_date.format('DD');
+        let y = new_date.format('YYYY');
+
+
 
         let formattedDate = `${mm}/${dd}/${y}`;
         return formattedDate;
 
     }
+
+    // function newDate(numDays) {
+
+    //     // let day = '33';
+    //     const dateNow = new Date();
+    //     let numberOfDaysToAdd = numDays;
+    //     dateNow.setDate(parseInt(day) + numberOfDaysToAdd - 1);
+
+    //     let mm = dateNow.getMonth() + 1;
+    //     let dd = dateNow.getDate();
+    //     let y = dateNow.getFullYear();
+
+    //     let formattedDate = `${mm}/${dd}/${y}`;
+    //     return formattedDate;
+
+    // }
 
     function todaysDate() {
         let today = new Date();
