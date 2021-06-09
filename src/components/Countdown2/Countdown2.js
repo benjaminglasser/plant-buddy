@@ -1,5 +1,4 @@
 import styles from './Countdown2.module.css'
-import { useEffect, useState } from 'react';
 import moment from 'moment'
 
 const Countdown = (props) => {
@@ -9,7 +8,7 @@ const Countdown = (props) => {
     return (
         <div className={styles.Cntr}>
 
-            { moment(props.today).isSameOrBefore(props.nextDate) ?
+            { moment(props.today).isBefore(props.nextDate) ?
                 <h3>Next watering date: {props.nextDate}</h3>
                 : <button className={styles.waterBuddy} onClick={() => props.handleUpdate(props.plantId)}>Water Your Buddy!</button>}
 

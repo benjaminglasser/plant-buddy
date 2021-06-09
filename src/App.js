@@ -23,7 +23,7 @@ function App() {
     }
   })
 
-
+  const [loading, setLoading] = useState(false);
 
 
   //New Leaf Submit
@@ -154,9 +154,11 @@ function App() {
         ...prevState,
         buddies
       }))
+      setLoading(true)
     }
 
     getAppData();
+
 
     // for auth
     const unsubscribe = auth.onAuthStateChanged(user =>
@@ -175,7 +177,7 @@ function App() {
   return (
     <div>
       <Header user={userState.user} />
-      {leaf && (
+      {loading ? (
         <>
           <NewLeaf
             leaf={leaf}
@@ -194,7 +196,7 @@ function App() {
             handleEdit={handleEdit}
           />
         </>
-      )}
+      ) : <p>hi</p>}
     </div>
   );
 }

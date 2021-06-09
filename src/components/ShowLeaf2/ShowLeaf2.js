@@ -97,7 +97,7 @@ export default function ShowLeaf2(props) {
 
     })
 
-    let today = todaysDate()
+    let today = moment(todaysDate()).format('MM/DD/YYYY')
 
 
 
