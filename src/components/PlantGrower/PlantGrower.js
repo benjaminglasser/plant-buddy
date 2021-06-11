@@ -8,7 +8,6 @@ const PlantGrower = (props) => {
 
     return (
         <>
-            {/* {props.leaf.buddies.length ? ( */}
             <div className="wrapper">
                 <div className="box">
                     {props.leaf.buddies ? (
@@ -40,7 +39,7 @@ const PlantGrower = (props) => {
                     <div className="pot-top"></div>
                 </div>
             </div>
-            {/* ) : <h1 className="no-plants">ADD A NEW PLANT</h1>} */}
+
         </>
     )
 }
