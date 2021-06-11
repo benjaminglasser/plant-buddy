@@ -1,4 +1,4 @@
-import styles from './Leafs.module.css'
+
 import Leaf from '../Leaf/Leaf'
 
 

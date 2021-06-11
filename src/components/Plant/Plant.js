@@ -1,5 +1,5 @@
 import styles from './Plant.module.css'
-import Leafs from '../Leafs/Leafs'
+
 import PlantGrower from '../PlantGrower/PlantGrower'
 
 

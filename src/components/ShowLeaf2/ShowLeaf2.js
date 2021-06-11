@@ -29,7 +29,7 @@ export default function ShowLeaf2(props) {
     useEffect(() => {
         let day = moment(date).format('MM/DD/YYYY')
         setStartDay(day)
-        console.log(startDay)
+        // console.log(startDay)
     }, [date])
 
     // console.log(startDay)

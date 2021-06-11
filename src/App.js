@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Header from './components/Header/Header'
 import Plant from './components/Plant/Plant'
 import NewLeaf from './components/NewLeaf/NewLeaf'
-import { createBuddy, fetchBuddies, deleteBuddy, updateBuddy } from './services/buddy-service'
+import { createBuddy, fetchBuddies, deleteBuddy } from './services/buddy-service'
 import $ from 'jquery'
 
 
@@ -23,6 +23,11 @@ function App() {
     }
   })
 
+  // user state variable
+  const [userState, setUserState] = useState({
+    user: null,
+  })
+
   const [loading, setLoading] = useState(false);
 
 
@@ -30,7 +35,7 @@ function App() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    const buddy = await createBuddy(leaf.newBuddy)
+    const buddy = await createBuddy(leaf.newBuddy, userState.user.uid)
 
     setLeaf({
       buddies: [...leaf.buddies, buddy],
@@ -80,15 +85,6 @@ function App() {
 
   async function handleUpdate(id) {
 
-    //handle edit
-
-
-    // {
-    //   leaf.newBuddy.name == buddyToEdit.name ?
-    //     console.log(leaf.newBuddy) :
-    //     console.log('hi')
-
-    // }
     if (leaf.newBuddy.name !== "") {
 
       const { _id, name, schedule } = leaf.newBuddy
@@ -136,10 +132,7 @@ function App() {
 
   }
 
-  // user state variables
-  const [userState, setUserState] = useState({
-    user: null
-  })
+
 
   // initial load of info from backend
   // auth load
@@ -148,7 +141,9 @@ function App() {
 
     async function getAppData() {
 
-      const buddies = await fetchBuddies();
+      if (!userState.user) return;
+
+      const buddies = await fetchBuddies(userState.user.uid);
 
       setLeaf(prevState => ({
         ...prevState,
@@ -160,7 +155,7 @@ function App() {
     getAppData();
 
 
-    // for auth
+    // for auth observer
     const unsubscribe = auth.onAuthStateChanged(user =>
       setUserState({ user })
     );
@@ -170,14 +165,14 @@ function App() {
       // clean up subscriptions
       unsubscribe();
     }
-  }, [])
+  }, [userState.user])
 
 
 
   return (
     <div>
       <Header user={userState.user} />
-      {loading ? (
+      {userState.user ? (
         <>
           <NewLeaf
             leaf={leaf}
@@ -186,17 +181,21 @@ function App() {
             image={image}
             setImage={setImage}
           />
-          <Plant
-            leaf={leaf}
-            setLeaf={setLeaf}
-            handleSubmit={handleSubmit}
-            handleChange={handleChange}
-            handleDelete={handleDelete}
-            handleUpdate={handleUpdate}
-            handleEdit={handleEdit}
-          />
+          {loading ? (
+            <>
+              <Plant
+                leaf={leaf}
+                setLeaf={setLeaf}
+                handleSubmit={handleSubmit}
+                handleChange={handleChange}
+                handleDelete={handleDelete}
+                handleUpdate={handleUpdate}
+                handleEdit={handleEdit}
+              />
+            </>
+          ) : <p className="message" >Loading...</p>}
         </>
-      ) : <p>hi</p>}
+      ) : <p className="message">Please Login To Get Started</p>}
     </div>
   );
 }
