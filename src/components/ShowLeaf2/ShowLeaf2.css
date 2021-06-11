@@ -1,6 +1,7 @@
 .showCntr {
   position: relative;
   width: 600px;
+  font-weight: 100;
 }
 
 .Show {
@@ -8,10 +9,12 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  font-weight: 100;
+  font-size: 35px;
 }
 
 .Show > * {
-  padding: 30px;
+  padding: 15px 30px;
 }
 
 .Trash {
@@ -84,6 +87,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 10px 10px #e4e8b5;
 }
 
 @keyframes leafGrow {

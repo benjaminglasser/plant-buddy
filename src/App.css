@@ -5,6 +5,11 @@
   align-items: center;
   font-size: 40px;
   height: 100vh;
-  cursor: pointer;
   font-weight: 700;
+}
+
+.message span:hover {
+  font-size: 50px;
+  color: rgb(91, 158, 91);
+  cursor: pointer;
 }

@@ -151,7 +151,7 @@ export default function ShowLeaf2(props) {
             <List>
                 <div className="Show" >
 
-                    <h1>{props.name}</h1>
+                    <h1 style={{ fontWeight: '200' }}>{props.name}</h1>
                     <div className="img" >
                         {props.img ? <img className="photo" src={props.img} alt="plant" /> : ''}
                     </div>

@@ -197,7 +197,7 @@ function App() {
               />
             </>
           </>
-        ) : <p className="message" onClick={login}>Login</p>}
+        ) : <p className="message" onClick={login}><span>Login</span></p>}
       </>
       {/* ) : <p className="message" >Loading...</p>} */}
     </div>
