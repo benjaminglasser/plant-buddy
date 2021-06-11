@@ -1,5 +1,5 @@
 import styles from './Header.module.css'
-import { login, logout } from '../../services/firebase';
+import { logout } from '../../services/firebase';
 import Logo from "../../logo/Plant-Buddy-Logo-01.png"
 
 function Header(props) {
@@ -12,13 +12,15 @@ function Header(props) {
                         {
                             props.user ?
                                 <>
-                                    <li style={{ fontSize: '15px' }}>Hello {props.user.displayName}</li>
-                                    <li style={{ fontSize: '10px' }} className={styles.navLink}
+                                    <li style={{ fontSize: '16px' }, { fontWeight: '700' }}>Hello {props.user.displayName}</li>
+                                    <li
+                                        className={styles.logout}
                                         onClick={logout}>
                                         Logout
-                                </li>
+                                    </li>
+
                                 </> :
-                                <li className={styles.navLink} onClick={login}>Login</li>
+                                <li></li>
                         }
                     </ul>
                 </nav>

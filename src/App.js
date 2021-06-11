@@ -5,6 +5,7 @@ import Header from './components/Header/Header'
 import Plant from './components/Plant/Plant'
 import NewLeaf from './components/NewLeaf/NewLeaf'
 import { createBuddy, fetchBuddies, deleteBuddy } from './services/buddy-service'
+import { login } from './services/firebase';
 import $ from 'jquery'
 
 
@@ -149,10 +150,11 @@ function App() {
         ...prevState,
         buddies
       }))
-      setLoading(true)
+      // setLoading(true)
     }
 
     getAppData();
+
 
 
     // for auth observer
@@ -171,17 +173,18 @@ function App() {
 
   return (
     <div>
-      <Header user={userState.user} />
-      {userState.user ? (
-        <>
-          <NewLeaf
-            leaf={leaf}
-            handleSubmit={handleSubmit}
-            handleChange={handleChange}
-            image={image}
-            setImage={setImage}
-          />
-          {loading ? (
+      {/* {loading ? ( */}
+      <>
+        <Header user={userState.user} />
+        {userState.user ? (
+          <>
+            <NewLeaf
+              leaf={leaf}
+              handleSubmit={handleSubmit}
+              handleChange={handleChange}
+              image={image}
+              setImage={setImage}
+            />
             <>
               <Plant
                 leaf={leaf}
@@ -193,9 +196,10 @@ function App() {
                 handleEdit={handleEdit}
               />
             </>
-          ) : <p className="message" >Loading...</p>}
-        </>
-      ) : <p className="message">Please Login To Get Started</p>}
+          </>
+        ) : <p className="message" onClick={login}>Login</p>}
+      </>
+      {/* ) : <p className="message" >Loading...</p>} */}
     </div>
   );
 }
