@@ -29,7 +29,7 @@ function App() {
     user: null,
   })
 
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
 
   //New Leaf Submit
@@ -88,9 +88,9 @@ function App() {
 
     if (leaf.newBuddy.name !== "") {
 
-      const { _id, name, schedule } = leaf.newBuddy
+      const { name, schedule } = leaf.newBuddy
       try {
-        const buddy = await fetch(`http://localhost:3001/api/buddies/${id}`, {
+        const buddy = await fetch(`https://plant-buddy-backend.herokuapp.com/api/buddies/${id}`, {
           method: 'PUT',
           headers: {
             'Content-type': 'Application/json'

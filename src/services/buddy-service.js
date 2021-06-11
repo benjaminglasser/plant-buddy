@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3001/api/buddies'
+const BASE_URL = 'https://plant-buddy-backend.herokuapp.com/api/buddies'
 
 function fetchBuddies(uid) {
     return fetch(BASE_URL + '?uid=' + uid).then(res => res.json())

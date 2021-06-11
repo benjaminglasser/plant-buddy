@@ -12,7 +12,7 @@ function Header(props) {
                         {
                             props.user ?
                                 <>
-                                    <li style={{ fontSize: '16px' }, { fontWeight: '700' }}>Hello {props.user.displayName}</li>
+                                    <li style={{ fontSize: '16px' }}>Hello {props.user.displayName}</li>
                                     <li
                                         className={styles.logout}
                                         onClick={logout}>

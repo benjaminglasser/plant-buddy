@@ -40,7 +40,7 @@ export default function ShowLeaf2(props) {
         // const dateNow = new Date();
         let numberOfDaysToAdd = numDays;
 
-        let new_date = moment(startDay, "MM-DD-YYYY").add('days', numberOfDaysToAdd);
+        let new_date = moment(startDay, "MM-DD-YYYY").add(numberOfDaysToAdd, 'days');
 
         let mm = new_date.format('MM');
         let dd = new_date.format('DD');
