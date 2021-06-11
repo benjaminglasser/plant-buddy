@@ -45,7 +45,7 @@
   left: 0.5em;
   margin-top: -20px;
   transition: ease-out 0.2s;
-  animation: leafGrow2 2s ease-in 1;
+  animation: leafGrow2 2s ease-in 1, leafMove1 9s infinite;
 }
 
 .leaf0:hover {
@@ -69,7 +69,7 @@
   top: 1em;
   left: 0.5em;
   transition: ease-out 0.2s;
-  animation: leafGrow 2s ease-in 1;
+  animation: leafGrow 2s ease-in 1, leafMove2 9s infinite;
 }
 
 .leaf1:hover {
@@ -104,6 +104,34 @@
 
   100% {
     /* transform: rotate(-60deg); */
+  }
+}
+
+@keyframes leafMove1 {
+  0% {
+    transform: rotate(19deg) translateX(26px) translateY(20px);
+  }
+
+  50% {
+    transform: rotate(12deg) translateX(21px) translateY(20px);
+  }
+
+  100% {
+    transform: rotate(19deg) translateX(26px) translateY(20px);
+  }
+}
+
+@keyframes leafMove2 {
+  0% {
+    transform: rotateZ(32deg) translateX(-78px) translateY(39px);
+  }
+
+  50% {
+    transform: rotateZ(27deg) translateX(-78px) translateY(39px);
+  }
+
+  100% {
+    transform: rotateZ(32deg) translateX(-78px) translateY(39px);
   }
 }
 
