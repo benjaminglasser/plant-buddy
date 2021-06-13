@@ -24,12 +24,13 @@ Help keep track of your plants watering schedules with this plant friendly water
 - Google Firebase
 - React
 - Google Fonts
+- Cloudinary
 - Reactstrap
 - Moment JS
 
 ## Getting Started
 
-[Click here](#) to get started
+[Click here](https://plantbuddy.netlify.app/) to get started
 
 ## Future Enhancements
 
